@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Wizard
   isPlayerControlled: 0
-  baseMaxHP: 10
+  baseMaxHP: 20
   baseStrength: 1
   baseMagic: 9
   baseDefense: 3

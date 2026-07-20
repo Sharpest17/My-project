@@ -19,9 +19,10 @@ MonoBehaviour:
   targetType: 1
   actionCost: 100
   spCost: 0
-  tpCost: 3
+  tpCost: 0
   tags: 9
   intents: 1
   damageType: 0
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
+  - {fileID: 11400000, guid: e94c8f57095d207429cb70e5de475719, type: 2}

@@ -165,7 +165,6 @@ public void StartTurn(Combatant current)
     if (!current.IsAlive())
     {
         Debug.Log($"{current.character.characterName} is currently down, skipped");
-        current.actionValue += BaseActionCost/current.GetModifiedCombatStat(StatType.ActionSpeed);
         EndTurn(current);
         return;
     }
@@ -177,7 +176,6 @@ public void StartTurn(Combatant current)
 
     if(ctx.cancelled){
         Debug.Log($"{current.character.characterName} cannot act.");
-        current.actionValue += BaseActionCost/current.GetModifiedCombatStat(StatType.ActionSpeed);
         EndTurn(current);
         return;
     }
@@ -238,6 +236,7 @@ public void TriggerSkill(Combatant user, Skill skill, Combatant target)
 
 public void EndTurn(Combatant combatant)
 {
+    combatant.actionValue += BaseActionCost/combatant.GetModifiedCombatStat(StatType.ActionSpeed);
     TurnContext ctx = new TurnContext(combatant, turnCount);
     combatant.TickStatuses(DurationType.TurnEnd);
     ExecutePhase(HookType.TurnEnd, ctx);
