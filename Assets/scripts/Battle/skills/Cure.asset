@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
+  m_Name: Cure
+  m_EditorClassIdentifier: 
+  skillName: Cure
+  power: 10
+  attackingStat: 2
+  defendStat: 4
+  targetType: 4
+  actionCost: 50
+  tags: 128
+  intents: 2
+  damageType: 1
+  effects:
+  - {fileID: 11400000, guid: bc33de1f66d1b4046a736cff7052225f, type: 2}

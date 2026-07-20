@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
+  m_Name: Warrior
+  m_EditorClassIdentifier: 
+  characterName: Warrior
+  isPlayerControlled: 1
+  baseMaxHP: 40
+  baseStrength: 11
+  baseMagic: 4
+  baseDefense: 7
+  baseResistance: 0
+  baseSpeed: 7
+  baseSkill: 10
+  baseLuck: 18
+  baseMove: 9
+  skills:
+  - {fileID: 11400000, guid: ae73b9fc418330843b5e0401d4fd5827, type: 2}
+  - {fileID: 11400000, guid: 11a1617249018f14092908c41f7843b0, type: 2}
+  passives: []

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
+  m_Name: Fighter
+  m_EditorClassIdentifier: 
+  characterName: Fighter
+  isPlayerControlled: 1
+  baseMaxHP: 30
+  baseStrength: 8
+  baseMagic: 5
+  baseDefense: 8
+  baseResistance: 3
+  baseSpeed: 14
+  baseSkill: 25
+  baseLuck: 10
+  baseMove: 11
+  maxSP: 10
+  skills:
+  - {fileID: 11400000, guid: f858d8031c630b94f86a0c62c031d5eb, type: 2}
+  - {fileID: 11400000, guid: 80f8eba0d3a76cc43ba2764b67f1e202, type: 2}
+  passives:
+  - {fileID: 11400000, guid: 11be815f5a5c1b7429982b62c35794cf, type: 2}

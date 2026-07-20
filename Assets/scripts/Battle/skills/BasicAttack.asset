@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
+  m_Name: BasicAttack
+  m_EditorClassIdentifier: 
+  skillName: Basic Attack
+  power: 5
+  attackingStat: 1
+  defendStat: 3
+  targetType: 1
+  actionCost: 100
+  spCost: 0
+  tpCost: 3
+  tags: 9
+  intents: 1
+  damageType: 0
+  effects:
+  - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
