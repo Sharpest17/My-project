@@ -11,10 +11,11 @@ public class Skill : ScriptableObject
     public TargetType targetType;
 
     public float actionCost;
-
+    public int baseHit;
+    public int baseCrit;
     public int spCost;
-
     public int tpCost;
+
     public SkillTag tags;
     public IntentTag intents;
     public DamageType damageType;

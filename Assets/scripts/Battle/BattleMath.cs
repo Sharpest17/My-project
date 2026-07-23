@@ -14,16 +14,18 @@ public static class BattleMath
         float baseCrit = ctx.attacker.GetModifiedCombatStat(StatType.CritChance);
         float baseCritAvoid = ctx.target.GetModifiedCombatStat(StatType.CritAvoid);
         Debug.Log($"Base Hit: {baseHit}");
+        Debug.Log($"skill's base hit is: {ctx.skill.baseHit}");
         Debug.Log($"Base Evasion: {baseEvasion}");
         Debug.Log($"Base Crit: {baseCrit}");
+        Debug.Log($"skill's base crit is: {ctx.skill.baseCrit}");
         Debug.Log($"Base Crit Avoid: {baseCritAvoid}");
 
         float baseResist = ctx.target.GetResistance(ctx.type);
 
 
         //will be replaced with the proper formulas for hit and crit rates later
-        float finalHit = (baseHit+ctx.hitMod)-(baseEvasion+ctx.evadeMod);
-        float finalCrit = (baseCrit+ctx.critMod) -(baseCritAvoid+ctx.critAvoMod);
+        float finalHit = (baseHit+ctx.hitMod)-(baseEvasion+ctx.evadeMod)+ctx.skill.baseHit;
+        float finalCrit = (baseCrit+ctx.critMod) -(baseCritAvoid+ctx.critAvoMod)+ctx.skill.baseCrit;
         Debug.Log($"final hit rate is {finalHit}");
         Debug.Log($"final crit rate is {finalCrit}");
 
