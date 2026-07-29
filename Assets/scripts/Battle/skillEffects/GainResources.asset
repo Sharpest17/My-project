@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GainResources
   m_EditorClassIdentifier: 
   SPamount: 3
-  TPamount: 0
+  TPamount: 2
   SPfixed: 0
   TPfixed: 1
   affectTarget: 0

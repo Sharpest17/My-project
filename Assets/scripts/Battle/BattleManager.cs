@@ -149,6 +149,7 @@ public void StartBattle(
     combatant.actionValue = BaseActionCost / combatant.GetModifiedCombatStat(StatType.ActionSpeed);
 }
     battleUI.SetupCombatHUD(combatants);
+    battleUI.SetupTPHUD(teams);
     ProcessTurns();
 }
 public void StartTurn(Combatant current)

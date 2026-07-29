@@ -15,7 +15,12 @@ public class BattleUI : MonoBehaviour
     public Transform allyPanel;
     public Transform enemyPanel;
 
+    public Transform tpPanel;
+    public GameObject teamHudPrefab;
+
     private List<CombatantHud> combatantDisplays = new List<CombatantHud>();
+    
+    private List<TeamHud> teamDisplays = new List<TeamHud>();
 
     public GameObject combatantDisplayPrefab;
     public void ShowSkills(Combatant player)
@@ -108,10 +113,32 @@ private void ClearPanel(Transform panel)
         combatantDisplays.Add(hud);
     }
 }
+    public void SetupTPHUD(List<Team> teams)
+{
+    teamDisplays.Clear();
+
+foreach (Team team in teams)
+{
+    GameObject display =
+        Instantiate(teamHudPrefab, tpPanel);
+
+    TeamHud hud =
+        display.GetComponent<TeamHud>();
+
+    hud.Setup(team);
+
+    teamDisplays.Add(hud);
+}
+}
 
     public void RefreshCombatHUD()
 {
     foreach (var hud in combatantDisplays)
+    {
+        hud.Refresh();
+    }
+
+    foreach (var hud in teamDisplays)
     {
         hud.Refresh();
     }
@@ -120,6 +147,7 @@ private void ClearPanel(Transform panel)
 {
     ClearPanel(allyPanel);
     ClearPanel(enemyPanel);
+    ClearPanel(tpPanel);
 
     combatantDisplays.Clear();
 
