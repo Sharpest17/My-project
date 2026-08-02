@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
+  m_Name: Mazano
+  m_EditorClassIdentifier: 
+  characterName: Mazano
+  isPlayerControlled: 1
+  baseMaxHP: 30
+  baseStrength: 7
+  baseMagic: 7
+  baseDefense: 5
+  baseResistance: 7
+  baseSpeed: 13
+  baseSkill: 7
+  baseLuck: 20
+  baseMove: 13
+  maxSP: 15
+  skills:
+  - {fileID: 11400000, guid: 17bbb4e5a821c0c4c9ea46bb1bc0648a, type: 2}
+  - {fileID: 11400000, guid: dc98c2af0555508418930509d9969904, type: 2}
+  passives:
+  - {fileID: 11400000, guid: 050fafa08f82bdf4497cd52d90736a48, type: 2}

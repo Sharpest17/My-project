@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
-  m_Name: BasicAttack
+  m_Name: TheTurn
   m_EditorClassIdentifier: 
-  skillName: Basic Attack
+  skillName: The Turn
   power: 5
-  attackingStat: 1
-  defendStat: 3
-  targetType: 1
-  actionCost: 1000
-  baseHit: 50
-  baseCrit: 10
-  spCost: 0
-  tpCost: 0
-  tags: 9
-  intents: 1
-  damageType: 0
+  attackingStat: 2
+  defendStat: 4
+  targetType: 4
+  actionCost: 500
+  baseHit: 0
+  baseCrit: 50
+  spCost: 2
+  tpCost: 1
+  tags: 128
+  intents: 6
+  damageType: 4
   effects:
-  - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
-  - {fileID: 11400000, guid: e94c8f57095d207429cb70e5de475719, type: 2}
+  - {fileID: 11400000, guid: bc33de1f66d1b4046a736cff7052225f, type: 2}

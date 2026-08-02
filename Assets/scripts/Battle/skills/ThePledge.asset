@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
-  m_Name: BasicAttack
+  m_Name: ThePledge
   m_EditorClassIdentifier: 
-  skillName: Basic Attack
-  power: 5
+  skillName: The Pledge
+  power: 4
   attackingStat: 1
   defendStat: 3
   targetType: 1
   actionCost: 1000
   baseHit: 50
-  baseCrit: 10
+  baseCrit: 100
   spCost: 0
   tpCost: 0
   tags: 9
   intents: 1
-  damageType: 0
+  damageType: 7
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
-  - {fileID: 11400000, guid: e94c8f57095d207429cb70e5de475719, type: 2}
+  - {fileID: 11400000, guid: 0dbb008debd6eba409bd72a03291c1ef, type: 2}

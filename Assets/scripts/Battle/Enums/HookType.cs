@@ -13,12 +13,15 @@ public enum HookType
     BeforeHeal,
     AfterHeal,
 
+    OnCrit,
+    OnMiss,
+    OnHit,
     OnKill,
 
     TurnStart,
     TurnEnd,
     
-    SkillUsed,
+    ModifySkill,
     SkillTriggered,
 
     StatusModify,

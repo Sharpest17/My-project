@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DealDamageEffect", menuName = "RPG/SkillEffect/DealDamage")]
 public class DealDamage : SkillEffect
 {
-    public override void Apply(Combatant user, Combatant target, Skill skill)
+    public override void Apply(Combatant user, Combatant target, Skill skill, SkillContext skillctx)
     {
         DamageContext ctx = new DamageContext(
         user,

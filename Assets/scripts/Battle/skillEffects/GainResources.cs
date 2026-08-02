@@ -17,7 +17,9 @@ public class GainResources : SkillEffect
     public override void Apply(
         Combatant user,
         Combatant target,
-        Skill skill)
+        Skill skill,
+        SkillContext skillctx
+        )
     {
         Combatant receiver =
             affectTarget

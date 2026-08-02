@@ -11,7 +11,7 @@ public class GiveStatus : SkillEffect
     public float chance = 1f;
 
 
-    public override void Apply(Combatant user, Combatant target, Skill skill)
+    public override void Apply(Combatant user, Combatant target, Skill skill, SkillContext skillctx)
     {
             StatusEffect newStatus = Instantiate(statusPrefab);
             StatusContext ctx = new StatusContext(user, target, newStatus);

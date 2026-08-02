@@ -18,22 +18,9 @@ public class BattleManager : MonoBehaviour
     public ModifierManager modifierManager;
 
     int turnCount = 0;
-    private float BaseActionCost = 100f;
+    private float BaseActionCost = 1000f;
     Queue<DamageContext> damageQueue = new Queue<DamageContext>();
     Queue<HealContext> healingQueue = new Queue<HealContext>();
-
-    public Skill basic;
-
-    public Skill fireBall;
-
-    public Skill guard;
-    public Skill bigGuard;
-
-    public Skill plagueStrike;
-
-    public Skill cure;
-
-    public PassiveSkill lifesteal;
     
 public void EndBattle(bool playersWon)
     {
@@ -206,7 +193,12 @@ private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
     //user.SpendMana(skill.manaCost);
     //user.TriggerCooldown(skill);
 
-    skill.Use(user, targets);
+    //modifierManager.Broadcast(HookType.SkillUsed, ctx);
+    SkillContext skillCtx = new SkillContext(user, skill);
+
+    modifierManager.Broadcast(HookType.ModifySkill, skillCtx);
+
+    skill.Use(user, targets, skillCtx);
     user.SpendResources(skill);
     BattleManager.Instance.ProcessDamageQueue();
     BattleManager.Instance.ProcessHealingQueue();
@@ -221,13 +213,11 @@ public void TriggerSkill(Combatant user, Skill skill, Combatant target)
 {
     List<Combatant> targets = new List<Combatant> { target };
 
-    foreach (var t in targets)
-    {
-        foreach (var effect in skill.effects)
-        {
-            effect.Apply(user, t, skill);
-        }
-    }
+    SkillContext skillCtx = new SkillContext(user, skill);
+
+    modifierManager.Broadcast(HookType.ModifySkill, skillCtx);
+
+    skill.Use(user, targets, skillCtx);
     BattleManager.Instance.ProcessDamageQueue();
     BattleManager.Instance.ProcessHealingQueue();
     battleUI.RefreshCombatHUD();
@@ -268,6 +258,12 @@ public void AdvanceTurn()
 
 public void ProcessTurns()
 {
+    // TODO:
+// Future AV refactor:
+// Store raw AV values and calculate effective
+// time remaining using current Action Speed.
+// This will allow mid-turn Speed/Move changes
+// to immediately affect turn order.
     AdvanceTurn();
     
     foreach (var combatant in combatants)
@@ -279,6 +275,7 @@ public void ProcessTurns()
         }
     }
 }
+
 
 public void ClearAllStatuses()
     {

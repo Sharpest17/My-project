@@ -891,6 +891,7 @@ MonoBehaviour:
   playerParty:
   - {fileID: 11400000, guid: ca32e2f2831a6d94a93d099f141463aa, type: 2}
   - {fileID: 11400000, guid: 4a0f71bfd57978543a4499103d7f8a35, type: 2}
+  - {fileID: 11400000, guid: 5b593a1335d175e4191e87f558a07271, type: 2}
   testEncounter: {fileID: 11400000, guid: 4e5c86f405efa104387c09b6cf35e2a7, type: 2}
   worldManager: {fileID: 1980298456}
   battleManager: {fileID: 927664042}
@@ -1349,13 +1350,6 @@ MonoBehaviour:
   gameManager: {fileID: 701015838}
   battleActive: 0
   battleUI: {fileID: 623184117}
-  basic: {fileID: 11400000, guid: f858d8031c630b94f86a0c62c031d5eb, type: 2}
-  fireBall: {fileID: 11400000, guid: 98a5bd5d4c04ac9479fdbe22c265d3a7, type: 2}
-  guard: {fileID: 11400000, guid: 11a1617249018f14092908c41f7843b0, type: 2}
-  bigGuard: {fileID: 11400000, guid: 80f8eba0d3a76cc43ba2764b67f1e202, type: 2}
-  plagueStrike: {fileID: 11400000, guid: ae73b9fc418330843b5e0401d4fd5827, type: 2}
-  cure: {fileID: 11400000, guid: e7654c55d1c4325409252ec5a003e225, type: 2}
-  lifesteal: {fileID: 11400000, guid: 11be815f5a5c1b7429982b62c35794cf, type: 2}
 --- !u!4 &927664043
 Transform:
   m_ObjectHideFlags: 0

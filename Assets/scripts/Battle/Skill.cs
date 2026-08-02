@@ -20,13 +20,13 @@ public class Skill : ScriptableObject
     public IntentTag intents;
     public DamageType damageType;
     public List<SkillEffect> effects;
-    public virtual void Use(Combatant user, List<Combatant> targets)
+    public virtual void Use(Combatant user, List<Combatant> targets, SkillContext skillctx)
     {
         foreach (var target in targets)
     {
         foreach (var effect in effects)
         {
-            effect.Apply(user, target, this);
+            effect.Apply(user, target, this, skillctx);
         }
     }
     }

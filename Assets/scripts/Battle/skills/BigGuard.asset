@@ -17,7 +17,9 @@ MonoBehaviour:
   attackingStat: 1
   defendStat: 0
   targetType: 4
-  actionCost: 100
+  actionCost: 1000
+  baseHit: 0
+  baseCrit: 0
   spCost: 5
   tpCost: 0
   tags: 0

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
-  m_Name: BasicAttack
+  m_Name: ThePrestige
   m_EditorClassIdentifier: 
-  skillName: Basic Attack
+  skillName: The Prestige
   power: 5
-  attackingStat: 1
-  defendStat: 3
+  attackingStat: 2
+  defendStat: 4
   targetType: 1
   actionCost: 1000
-  baseHit: 50
-  baseCrit: 10
-  spCost: 0
-  tpCost: 0
-  tags: 9
+  baseHit: 60
+  baseCrit: 100
+  spCost: 3
+  tpCost: 1
+  tags: 33
   intents: 1
-  damageType: 0
+  damageType: 3
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
-  - {fileID: 11400000, guid: e94c8f57095d207429cb70e5de475719, type: 2}
+  - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}

@@ -201,6 +201,11 @@ public class Combatant
 
     BattleManager.Instance.modifierManager.Broadcast(HookType.AfterDamage, ctx);
 
+    if(ctx.critical)
+        {
+            BattleManager.Instance.modifierManager.Broadcast(HookType.OnCrit, ctx);
+        }
+
     if (wasAlive && !IsAlive())
         {
         Debug.Log($"{this.character.characterName} is down");
