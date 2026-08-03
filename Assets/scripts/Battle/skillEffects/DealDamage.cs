@@ -16,6 +16,14 @@ public class DealDamage : SkillEffect
         skill
         );
         BattleMath.CalculateDamage(ctx);
-        BattleManager.Instance.QueueDamage(ctx);
+        target.TakeDamage(ctx);
+
+        if(!ctx.dodged && !ctx.denied)
+        {
+            skillctx.lastHit = true;
+            skillctx.lastCrit =  ctx.critical;
+            skillctx.lastKOd = !target.IsAlive();
+        }
+        
     }
 }

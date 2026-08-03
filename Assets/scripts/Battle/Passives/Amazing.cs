@@ -4,7 +4,7 @@ using UnityEngine;
 public class Amazing : PassiveSkill
 {
     private int charge;
-    private int threshold = 1;
+    private int threshold = 3;
 
     public Skill enhanced;
     public override void OnHook(HookType hook, CombatContext ctx)
@@ -28,6 +28,15 @@ public class Amazing : PassiveSkill
             {
                 costCtx.noSPCost = true;
                 costCtx.noTPCost = true;
+            }
+        }
+        if((hook == HookType.UseSkill|| hook == HookType.SkillTriggered)&& ctx.attacker == owner)
+        {
+            SkillContext skillctx = ctx as SkillContext;
+            
+            if(skillctx.skill == enhanced && charge >= threshold)
+            {
+                charge -= threshold;
             }
         }
     }

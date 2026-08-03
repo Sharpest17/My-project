@@ -19,8 +19,6 @@ public class BattleManager : MonoBehaviour
 
     int turnCount = 0;
     private float BaseActionCost = 1000f;
-    Queue<DamageContext> damageQueue = new Queue<DamageContext>();
-    Queue<HealContext> healingQueue = new Queue<HealContext>();
     
 public void EndBattle(bool playersWon)
     {
@@ -147,7 +145,6 @@ public void StartTurn(Combatant current)
     TurnContext ctx = new TurnContext(current, turnCount);
     turnCount++;
     current.TickStatuses(DurationType.TurnStart);
-    ExecutePhase(HookType.TurnStart, ctx);
     ClearAllStatuses();
 
     if (!current.IsAlive())
@@ -196,12 +193,10 @@ private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
     //modifierManager.Broadcast(HookType.SkillUsed, ctx);
     SkillContext skillCtx = new SkillContext(user, skill);
 
-    modifierManager.Broadcast(HookType.ModifySkill, skillCtx);
+    modifierManager.Broadcast(HookType.UseSkill, skillCtx);
 
     skill.Use(user, targets, skillCtx);
     user.SpendResources(skill);
-    BattleManager.Instance.ProcessDamageQueue();
-    BattleManager.Instance.ProcessHealingQueue();
     battleUI.RefreshCombatHUD();
     user.actionValue += skill.actionCost / user.GetModifiedCombatStat(StatType.ActionSpeed);
 
@@ -215,11 +210,9 @@ public void TriggerSkill(Combatant user, Skill skill, Combatant target)
 
     SkillContext skillCtx = new SkillContext(user, skill);
 
-    modifierManager.Broadcast(HookType.ModifySkill, skillCtx);
+    modifierManager.Broadcast(HookType.SkillTriggered, skillCtx);
 
     skill.Use(user, targets, skillCtx);
-    BattleManager.Instance.ProcessDamageQueue();
-    BattleManager.Instance.ProcessHealingQueue();
     battleUI.RefreshCombatHUD();
 
     CheckBattleEnd();
@@ -230,7 +223,6 @@ public void EndTurn(Combatant combatant)
     combatant.actionValue += BaseActionCost/combatant.GetModifiedCombatStat(StatType.ActionSpeed);
     TurnContext ctx = new TurnContext(combatant, turnCount);
     combatant.TickStatuses(DurationType.TurnEnd);
-    ExecutePhase(HookType.TurnEnd, ctx);
     ClearAllStatuses();
     if (!battleActive)
         return;
@@ -306,46 +298,6 @@ public void ClearAllStatuses()
         GameManager.Instance.EndEncounter(playersWon);
     }
 }
-
-    public void QueueDamage(DamageContext ctx)
-{
-    Debug.Log("Queued damage: " + ctx.finalDamage);
-    damageQueue.Enqueue(ctx);
-}
-
-    public void QueueHealing(HealContext ctx)
-{
-    healingQueue.Enqueue(ctx);
-}
-
-    public void ProcessDamageQueue()
-{
-    while (damageQueue.Count > 0)
-    {
-        DamageContext ctx = damageQueue.Dequeue();
-        ctx.target.TakeDamage(ctx);
-    }
-    battleUI.RefreshCombatHUD();
-}
-
-    public void ProcessHealingQueue()
-{
-    while (healingQueue.Count > 0)
-    {
-        HealContext ctx = healingQueue.Dequeue();
-
-        ctx.target.RestoreHP(ctx);
-    }
-    battleUI.RefreshCombatHUD();
-}
-
-    public void ExecutePhase(HookType hook, CombatContext ctx)
-    {
-    modifierManager.Broadcast(hook, ctx);
-    ProcessDamageQueue();
-    ProcessHealingQueue();
-    battleUI.RefreshCombatHUD();
-    }
 
     public void OnSkillSelected(Skill skill)
 {

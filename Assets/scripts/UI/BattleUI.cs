@@ -115,6 +115,7 @@ private void ClearPanel(Transform panel)
 }
     public void SetupTPHUD(List<Team> teams)
 {
+    ClearPanel(tpPanel);
     teamDisplays.Clear();
 
 foreach (Team team in teams)

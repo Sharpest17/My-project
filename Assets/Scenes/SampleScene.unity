@@ -889,8 +889,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   playerParty:
-  - {fileID: 11400000, guid: ca32e2f2831a6d94a93d099f141463aa, type: 2}
-  - {fileID: 11400000, guid: 4a0f71bfd57978543a4499103d7f8a35, type: 2}
   - {fileID: 11400000, guid: 5b593a1335d175e4191e87f558a07271, type: 2}
   testEncounter: {fileID: 11400000, guid: 4e5c86f405efa104387c09b6cf35e2a7, type: 2}
   worldManager: {fileID: 1980298456}

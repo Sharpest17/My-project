@@ -17,7 +17,7 @@ public class DOT : StatusEffect
                 DamageSource.Status,
                 DamageType.Neutral
             );
-            BattleManager.Instance.QueueDamage(dmg);
+            dmg.target.TakeDamage(dmg);
 
             /*HealContext heal = new HealContext(
                 owner,
@@ -38,7 +38,7 @@ public class DOT : StatusEffect
                 StatType.Magic,
                 null
             );
-            BattleManager.Instance.QueueHealing(heal);
+            heal.target.RestoreHP(heal);
         }
     }
 }

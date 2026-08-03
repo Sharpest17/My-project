@@ -52,7 +52,7 @@ public class Guard : StatusEffect
 
             BattleManager.Instance.modifierManager.Broadcast(HookType.ModifyDamage, dmg);
             Debug.Log($"{dmg.target.character.characterName} has taken {dmg.finalDamage} damage from Thorns!");
-            BattleManager.Instance.QueueDamage(dmg);
+            dmg1.target.TakeDamage(dmg1);
             }
         }
     }

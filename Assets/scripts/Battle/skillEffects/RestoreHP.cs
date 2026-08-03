@@ -9,6 +9,8 @@ public class RestoreHP : SkillEffect
 
         BattleMath.CalculateHealing(ctx);
 
-        BattleManager.Instance.QueueHealing(ctx);
+        target.RestoreHP(ctx);
+
+        skillctx.lastHealCrit = ctx.critical;
     }
 }

@@ -262,8 +262,6 @@ public class Combatant
                     //Debug.Log($"Refreshed status {exists.Name} on {character.characterName}");
                     BattleManager.Instance.modifierManager.Broadcast(HookType.StatusRefreshed, ctx);
                 }
-                BattleManager.Instance.ProcessDamageQueue();
-                BattleManager.Instance.ProcessHealingQueue();
                 //Debug.Log($"status already present, New duration: {exists.duration}, New stack count: {exists.count}");
                 //Debug.Log($"Statuses now: {this.statusEffects.Count}");
                 return;
@@ -272,8 +270,6 @@ public class Combatant
             //Debug.Log($"Applying status {ctx.status.Name} to {this.character.characterName}");
             statusEffects.Add(ctx.status);
             BattleManager.Instance.modifierManager.Broadcast(HookType.StatusApplied, ctx);
-            BattleManager.Instance.ProcessDamageQueue();
-            BattleManager.Instance.ProcessHealingQueue();
             //Debug.Log($"Statuses now: {this.statusEffects.Count}");
 
     }

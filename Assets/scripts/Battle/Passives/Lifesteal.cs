@@ -11,7 +11,7 @@ public class Lifesteal : PassiveSkill
             DamageContext dmg = ctx as DamageContext;
             HealContext heal = new HealContext(owner, owner, 0, StatType.Strength, null);
             heal.finalHeal = dmg.finalDamage/2;
-            BattleManager.Instance.QueueHealing(heal);
+            owner.RestoreHP(heal);
         }
     }
 }
