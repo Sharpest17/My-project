@@ -19,7 +19,7 @@ MonoBehaviour:
   targetType: 4
   actionCost: 500
   baseHit: 0
-  baseCrit: 50
+  baseCrit: 100
   spCost: 2
   tpCost: 1
   tags: 128
@@ -27,3 +27,4 @@ MonoBehaviour:
   damageType: 4
   effects:
   - {fileID: 11400000, guid: bc33de1f66d1b4046a736cff7052225f, type: 2}
+  - {fileID: 11400000, guid: 308c2275fc6a1ee4fb71eb15d6ea5c2f, type: 2}

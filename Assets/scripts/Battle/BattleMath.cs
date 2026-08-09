@@ -74,10 +74,15 @@ public static class BattleMath
         int scaling = ctx.attacker.GetModifiedStat(ctx.healStat);
         float baseCrit = ctx.attacker.GetModifiedCombatStat(StatType.CritChance);
         float baseCritAvoid = ctx.target.GetModifiedCombatStat(StatType.CritAvoid);
-        float finalCrit = (baseCrit+ctx.critMod) -(baseCritAvoid+ctx.critAvoMod);
+        float finalCrit = (baseCrit+ctx.critMod) -(baseCritAvoid+ctx.critAvoMod)+ctx.skill.baseCrit;
         ctx.critical = ctx.autoCrit || (Random.Range(0f, 100f) < finalCrit);
 
         float critFactor = ctx.critical ? (1f + ctx.critBonus) : 1f;
+
+        Debug.Log($"Base Crit: {baseCrit}");
+        Debug.Log($"skill's base crit is: {ctx.skill.baseCrit}");
+        Debug.Log($"Base Crit Avoid: {baseCritAvoid}");
+        Debug.Log($"final crit rate is {finalCrit}");
 
         float finalHeal = 
         (scaling
