@@ -83,6 +83,10 @@ public static class BattleMath
         Debug.Log($"skill's base crit is: {ctx.skill.baseCrit}");
         Debug.Log($"Base Crit Avoid: {baseCritAvoid}");
         Debug.Log($"final crit rate is {finalCrit}");
+        if(ctx.critical == true)
+        {
+            Debug.Log($"critical heal!");
+        }
 
         float finalHeal = 
         (scaling

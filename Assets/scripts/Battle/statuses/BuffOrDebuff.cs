@@ -5,12 +5,12 @@ using System.Collections.Generic;
 public class BuffOrDebuff : StatusEffect
 {
     public List<StatModifier> statModifiers;
+    public List<CombatStatModifier>  combatStatModifiers;
 
     public override void OnHook(HookType hook, CombatContext ctx)
     {
-        if(hook != HookType.ModifyStat)
-            return;
-
+        if(hook == HookType.ModifyStat)
+        {
         StatContext statCtx = ctx as StatContext;
 
         foreach(var mod in statModifiers)
@@ -19,6 +19,18 @@ public class BuffOrDebuff : StatusEffect
             {
                 statCtx.multiplier += mod.multiplier;
                 statCtx.baseBonus += mod.baseBonus;
+            }
+        }
+        }
+        if(hook == HookType.ModifyCombatStat)
+        {
+            CombatStatContext combatCtx = ctx as CombatStatContext;
+            foreach(var mod in combatStatModifiers)
+            {
+                if(mod.combatStat == combatCtx.stat)
+                {
+                    combatCtx.value += mod.value;
+                }
             }
         }
     }

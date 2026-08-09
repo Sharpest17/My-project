@@ -13,8 +13,6 @@ public class ShieldContext : CombatContext
     public float outShield = 0f;
     public float inShield = 0f;
 
-    public bool zealScaling;
-
     public ShieldContext(Combatant shielder, Combatant target, int baseShield, StatusEffect status, StatType statType)
     {
         this.attacker = shielder;
