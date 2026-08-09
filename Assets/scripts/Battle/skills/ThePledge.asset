@@ -18,8 +18,8 @@ MonoBehaviour:
   defendStat: 3
   targetType: 1
   actionCost: 1000
-  baseHit: 100
-  baseCrit: 100
+  baseHit: 80
+  baseCrit: 40
   spCost: 0
   tpCost: 0
   tags: 9

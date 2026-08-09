@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: ThePrestige
   m_EditorClassIdentifier: 
   skillName: The Prestige
-  power: 5
+  power: 7
   attackingStat: 2
   defendStat: 4
   targetType: 1
   actionCost: 1000
-  baseHit: 100
-  baseCrit: 100
-  spCost: 3
+  baseHit: 70
+  baseCrit: 70
+  spCost: 7
   tpCost: 1
   tags: 33
   intents: 1

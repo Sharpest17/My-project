@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: TheTurn
   m_EditorClassIdentifier: 
   skillName: The Turn
-  power: 5
+  power: 8
   attackingStat: 2
   defendStat: 4
   targetType: 4
   actionCost: 500
   baseHit: 0
-  baseCrit: 100
+  baseCrit: 30
   spCost: 2
   tpCost: 1
   tags: 128
