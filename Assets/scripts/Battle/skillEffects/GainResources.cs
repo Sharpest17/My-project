@@ -26,41 +26,6 @@ public class GainResources : SkillEffect
             ? target
             : user;
 
-        ResourceContext ctx =
-            new ResourceContext(
-                user,
-                receiver,
-                SPamount,
-                TPamount,
-                SPfixed,
-                TPfixed
-            );
-
-        BattleManager.Instance.modifierManager.Broadcast(
-            HookType.ModifyResourceGain,
-            ctx
-        );
-
-        receiver.currentSP += ctx.finalSP;
-        receiver.team.currentTP += ctx.finalTP;
-
-        receiver.currentSP =
-            Mathf.Clamp(
-                receiver.currentSP,
-                0,
-                receiver.GetModifiedStat(StatType.MaxSP)
-            );
-
-        receiver.team.currentTP =
-            Mathf.Clamp(
-                receiver.team.currentTP,
-                0,
-                receiver.team.maxTP
-            );
-
-        Debug.Log(
-            $"{receiver.character.characterName} gained " +
-            $"{ctx.finalSP} SP and {ctx.finalTP} TP"
-        );
+        receiver.GainResources(user, SPamount, TPamount, SPfixed, TPfixed);
     }
 }

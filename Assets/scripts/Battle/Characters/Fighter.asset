@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fighter
   m_EditorClassIdentifier: 
   characterName: Fighter
-  isPlayerControlled: 1
+  isPlayerControlled: 0
   baseMaxHP: 30
   baseStrength: 8
   baseMagic: 5
@@ -25,7 +25,6 @@ MonoBehaviour:
   baseMove: 11
   maxSP: 10
   skills:
-  - {fileID: 11400000, guid: f858d8031c630b94f86a0c62c031d5eb, type: 2}
-  - {fileID: 11400000, guid: 80f8eba0d3a76cc43ba2764b67f1e202, type: 2}
+  - {fileID: 11400000, guid: f4da89e0b9e579f44ac967f27544bd3d, type: 2}
   passives:
   - {fileID: 11400000, guid: 11be815f5a5c1b7429982b62c35794cf, type: 2}

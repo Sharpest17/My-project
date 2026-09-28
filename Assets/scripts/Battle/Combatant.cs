@@ -237,6 +237,71 @@ public class Combatant
         Debug.Log($"current tp is now {team.currentTP}");
     }
 
+    public void GainResources(
+    Combatant source,
+    int SPamount,
+    int TPamount,
+    bool SPfixed = false,
+    bool TPfixed = false)
+    {
+
+        int initialSP = SPamount;
+        int initialTP = TPamount;
+        int actualSP = SPamount;
+        int actualTP = TPamount;
+        ResourceContext ctx =
+            new ResourceContext(
+                source,
+                this,
+                SPamount,
+                TPamount,
+                SPfixed,
+                TPfixed
+            );
+
+        BattleManager.Instance.modifierManager.Broadcast(
+            HookType.ModifyResourceGain,
+            ctx
+        );
+
+        if(ctx.spFixed)
+        {
+            currentSP += initialSP;
+        }else
+        {
+            currentSP += ctx.finalSP;
+            actualSP = ctx.finalSP;
+        }
+        if(ctx.tpFixed)
+        {
+            team.currentTP += initialTP;
+        }
+        else
+        {
+            team.currentTP += ctx.finalTP;
+            actualTP = ctx.finalTP;
+        }
+
+        this.currentSP =
+            Mathf.Clamp(
+                currentSP,
+                0,
+                GetModifiedStat(StatType.MaxSP)
+            );
+
+        team.currentTP =
+            Mathf.Clamp(
+                team.currentTP,
+                0,
+                team.maxTP
+            );
+
+        Debug.Log(
+            $"{character.characterName} gained " +
+            $"{actualSP} SP and {actualTP} TP"
+        );
+    }
+
     public void ApplyStatus(StatusContext ctx)
     {
     ctx.status.owner = ctx.attacker;

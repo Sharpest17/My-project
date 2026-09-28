@@ -30,5 +30,7 @@ public enum HookType
 
     ModifySkillCost,
 
+    ModifyTargets,
+
     ModifyResourceGain
 }

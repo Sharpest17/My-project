@@ -9,16 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c705a27dded2cbc4c9df3c85374d4da3, type: 3}
-  m_Name: BigGuard
+  m_Script: {fileID: 11500000, guid: de5fca75a0afd3f46be6ec3357f827ce, type: 3}
+  m_Name: Hiding
   m_EditorClassIdentifier: 
-  hooks: 00000000
-  tags: 
-  Name: Guard
-  baseDuration: 1
-  duration: 1
-  durationType: 1
-  count: 10
-  IsExpired: 0
-  resist: 0.25
-  Thorns: 5
+  statusPrefab: {fileID: 0}
+  chance: 1

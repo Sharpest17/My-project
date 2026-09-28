@@ -385,7 +385,33 @@ public void ClearAllStatuses()
             break;
         }   
     }
-        return targets;
+
+    TargetingContext ctx =
+    new TargetingContext(
+        user,
+        skill,
+        targets
+    );
+    List <Combatant> originalTargets = new List<Combatant>(ctx.validTargets);
+
+modifierManager.Broadcast(
+    HookType.ModifyTargets,
+    ctx
+);
+    
+    if(ctx.cancelled)
+        {
+            return originalTargets;
+        }
+    if(ctx.forcedTargets.Count >0)
+        {
+            return ctx.forcedTargets;
+        }
+    if(ctx.validTargets.Count > 0)
+        {
+            return ctx.validTargets;
+        }
+            return ctx.hiddenTargets;
     }
 
     private Combatant GetFirstAliveEnemy(Combatant user)

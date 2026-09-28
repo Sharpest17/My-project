@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   characterName: Warrior
-  isPlayerControlled: 1
+  isPlayerControlled: 0
   baseMaxHP: 40
   baseStrength: 11
   baseMagic: 4
   baseDefense: 7
   baseResistance: 0
-  baseSpeed: 7
+  baseSpeed: 13
   baseSkill: 10
   baseLuck: 18
   baseMove: 9
+  maxSP: 0
   skills:
   - {fileID: 11400000, guid: ae73b9fc418330843b5e0401d4fd5827, type: 2}
   - {fileID: 11400000, guid: 11a1617249018f14092908c41f7843b0, type: 2}
