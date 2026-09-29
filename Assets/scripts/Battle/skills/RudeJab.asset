@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
-  m_Name: FireBall
+  m_Name: RudeJab
   m_EditorClassIdentifier: 
-  skillName: Fire Ball
-  power: 15
-  attackingStat: 2
-  defendStat: 4
-  targetType: 2
+  skillName: Rude Jab
+  power: 4
+  attackingStat: 1
+  defendStat: 3
+  targetType: 1
   actionCost: 1000
-  baseHit: 1000
-  baseCrit: 20
-  spCost: 5
+  baseHit: 80
+  baseCrit: 10
+  spCost: 0
   tpCost: 0
-  tags: 32
+  tags: 2
   intents: 1
-  damageType: 1
+  damageType: 3
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
+  - {fileID: 11400000, guid: dc1a9cb7575e43146bfd7ff78b499d50, type: 2}

@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9900689c785632245890e9ef5c176bff, type: 3}
-  m_Name: Stealth
+  m_Script: {fileID: 11500000, guid: 79e22dde1dae15342b7fb7570f8b7382, type: 3}
+  m_Name: BounceHits
   m_EditorClassIdentifier: 
-  hooks: 
-  tags: 
-  Name: Stealth
-  baseDuration: 3
-  duration: 3
-  durationType: 1
-  count: 0
-  IsExpired: 0
+  bounceCount: 3

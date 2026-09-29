@@ -13,6 +13,10 @@ public class SkillContext : CombatContext
     public bool lastCrit;
     public bool lastKOd;
 
+    public int hitCount;
+    public int critCount;
+    public int koCount;
+
     public bool lastHealCrit;
 
     public int actionValueMod = 0;

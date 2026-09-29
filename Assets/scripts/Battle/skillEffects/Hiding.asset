@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5fca75a0afd3f46be6ec3357f827ce, type: 3}
   m_Name: Hiding
   m_EditorClassIdentifier: 
-  statusPrefab: {fileID: 0}
+  statusPrefab: {fileID: 11400000, guid: 0ab7ee0c92ffa864ebddd7e27a79b480, type: 2}
   chance: 1

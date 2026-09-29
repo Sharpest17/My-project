@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
-  m_Name: Wizard
+  m_Name: Thiazi
   m_EditorClassIdentifier: 
-  characterName: Wizard
-  isPlayerControlled: 0
-  baseMaxHP: 20
-  baseStrength: 1
-  baseMagic: 9
-  baseDefense: 3
-  baseResistance: 8
-  baseSpeed: 15
-  baseSkill: 18
-  baseLuck: 18
-  baseMove: 8
+  characterName: Thiazi
+  isPlayerControlled: 1
+  baseMaxHP: 45
+  baseStrength: 10
+  baseMagic: 6
+  baseDefense: 2
+  baseResistance: 4
+  baseSpeed: 18
+  baseSkill: 13
+  baseLuck: 10
+  baseMove: 10
   maxSP: 10
   skills:
-  - {fileID: 11400000, guid: 98a5bd5d4c04ac9479fdbe22c265d3a7, type: 2}
+  - {fileID: 11400000, guid: ad78a92a5e5ae9843b850c78d3ad4819, type: 2}
   passives: []

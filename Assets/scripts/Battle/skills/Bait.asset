@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
-  m_Name: FireBall
+  m_Name: Bait
   m_EditorClassIdentifier: 
-  skillName: Fire Ball
-  power: 15
-  attackingStat: 2
-  defendStat: 4
-  targetType: 2
-  actionCost: 1000
-  baseHit: 1000
-  baseCrit: 20
-  spCost: 5
+  skillName: Bait
+  power: 0
+  attackingStat: 0
+  defendStat: 0
+  targetType: 0
+  actionCost: 500
+  baseHit: 0
+  baseCrit: 0
+  spCost: 2
   tpCost: 0
-  tags: 32
-  intents: 1
-  damageType: 1
+  tags: 0
+  intents: 4
+  damageType: 3
   effects:
-  - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
+  - {fileID: 11400000, guid: ec40f2fa974006348a464cf658bedf3b, type: 2}
+  - {fileID: 11400000, guid: 22fa57647bca3e946aab00191850299e, type: 2}

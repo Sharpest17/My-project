@@ -16,14 +16,7 @@ public class DealDamage : SkillEffect
         skill
         );
         BattleMath.CalculateDamage(ctx);
-        target.TakeDamage(ctx);
-
-        if(!ctx.dodged && !ctx.denied)
-        {
-            skillctx.lastHit = true;
-            skillctx.lastCrit =  ctx.critical;
-            skillctx.lastKOd = !target.IsAlive();
-        }
+        target.TakeDamage(ctx, skillctx);
         
     }
 }

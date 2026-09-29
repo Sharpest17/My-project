@@ -23,13 +23,11 @@ public class Stealth : StatusEffect
     if(targetCtx.validTargets.Contains(owner))
     {
         targetCtx.validTargets.Remove(owner);
-    }
-
-    if(!targetCtx.hiddenTargets.Contains(owner))
+        if(!targetCtx.hiddenTargets.Contains(owner))
     {
         targetCtx.hiddenTargets.Add(owner);
     }
+    }
 }
-
     }
 }

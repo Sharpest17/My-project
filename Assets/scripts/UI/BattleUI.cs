@@ -115,6 +115,7 @@ private void ClearPanel(Transform panel)
 }
     public void SetupTPHUD(List<Team> teams)
 {
+    Debug.Log($"team count {teams.Count}");
     ClearPanel(tpPanel);
     teamDisplays.Clear();
 

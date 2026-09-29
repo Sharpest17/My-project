@@ -133,6 +133,7 @@ public void StartBattle(
 {
     combatant.actionValue = BaseActionCost / combatant.GetModifiedCombatStat(StatType.ActionSpeed);
 }
+    Debug.Log($"combatant count: {combatants.Count}");
     battleUI.SetupCombatHUD(combatants);
     battleUI.SetupTPHUD(teams);
     ProcessTurns();
@@ -294,6 +295,7 @@ public void ClearAllStatuses()
         battleActive = false;
 
         bool playersWon = anyPlayersAlive;
+        teams.Clear();
         battleUI.ClearCombatHUD();
         GameManager.Instance.EndEncounter(playersWon);
     }
@@ -308,8 +310,23 @@ public void ClearAllStatuses()
             currentCombatant,
             skill
         );
+    
+    switch(skill.targetType)
+    {
+        case TargetType.SingleEnemy:
+        case TargetType.SingleAlly:
+        case TargetType.DeadAlly:
+            battleUI.ShowTargets(targets);
+            break;
+            default:
+            UseSkill(
+                currentCombatant,
+                pendingSkill,
+                targets
+            );
+            break;
+    }
 
-    battleUI.ShowTargets(targets);
 }
 
     public void OnTargetsSelected(
@@ -399,6 +416,7 @@ modifierManager.Broadcast(
     ctx
 );
     
+    
     if(ctx.cancelled)
         {
             return originalTargets;
@@ -414,25 +432,25 @@ modifierManager.Broadcast(
             return ctx.hiddenTargets;
     }
 
-    private Combatant GetFirstAliveEnemy(Combatant user)
+    public Combatant GetFirstAliveEnemy(Combatant user)
     {
     return combatants.Find(c => 
         c.IsAlive() && !c.IsAlly(user));
     }
 
-    private List<Combatant> GetAllAliveEnemies(Combatant user)
+    public List<Combatant> GetAllAliveEnemies(Combatant user)
     {
     return combatants.FindAll(c => 
         c.IsAlive() && !c.IsAlly(user));
     }
 
-    private Combatant GetFirstAliveAlly(Combatant user)
+    public Combatant GetFirstAliveAlly(Combatant user)
     {
     return combatants.Find(c => 
         c.IsAlive() && c.IsAlly(user));
     }
 
-    private Combatant GetRandomAliveEnemy(Combatant user)
+    public Combatant GetRandomAliveEnemy(Combatant user)
     {
     List<Combatant> enemies = GetAllAliveEnemies(user);
 
@@ -442,7 +460,7 @@ modifierManager.Broadcast(
     return enemies[UnityEngine.Random.Range(0, enemies.Count)];
     }
 
-    private Combatant GetRandomAliveAlly(Combatant user)
+    public Combatant GetRandomAliveAlly(Combatant user)
     {
     List<Combatant> allies = GetAllAliveAllies(user);
 
@@ -452,12 +470,12 @@ modifierManager.Broadcast(
     return allies[UnityEngine.Random.Range(0, allies.Count)];
     }
 
-    private List<Combatant> GetAllAliveAllies(Combatant user)
+    public List<Combatant> GetAllAliveAllies(Combatant user)
     {
     return combatants.FindAll(c =>
         c.IsAlive() && c.IsAlly(user));
     }
-    private Combatant GetFirstDeadAlly(Combatant user)
+    public Combatant GetFirstDeadAlly(Combatant user)
 {
     return combatants.Find(c =>
         !c.IsAlive() &&

@@ -25,5 +25,5 @@ MonoBehaviour:
   baseMove: 10
   maxSP: 0
   skills:
-  - {fileID: 11400000, guid: 542782ab7da26cf47837294f5b776b05, type: 2}
+  - {fileID: 11400000, guid: f4da89e0b9e579f44ac967f27544bd3d, type: 2}
   passives: []

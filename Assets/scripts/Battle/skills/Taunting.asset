@@ -26,4 +26,4 @@ MonoBehaviour:
   intents: 0
   damageType: 0
   effects:
-  - {fileID: 11400000, guid: ec40f2fa974006348a464cf658bedf3b, type: 2}
+  - {fileID: 11400000, guid: 4f741c7ed7f1df247ae528a50c5f2674, type: 2}

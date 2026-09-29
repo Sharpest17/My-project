@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   characterName: Warrior
-  isPlayerControlled: 0
+  isPlayerControlled: 1
   baseMaxHP: 40
   baseStrength: 11
   baseMagic: 4

@@ -177,8 +177,9 @@ public class Combatant
     return all;
     }
 
-    public void TakeDamage(DamageContext ctx)
+    public void TakeDamage(DamageContext ctx, SkillContext skillctx = null)
 {
+    
     if(ctx.denied)
         {
             return;
@@ -196,6 +197,26 @@ public class Combatant
     currentHP -= (ctx.finalDamage- ctx.blockedDamage);
     if (currentHP < 0)
         currentHP = 0;
+
+    if(skillctx != null)
+    {
+        skillctx.hitCount++;
+        skillctx.lastHit = true;
+
+        if(ctx.critical)
+        {
+            skillctx.critCount++;
+        }
+
+        skillctx.lastCrit = ctx.critical;
+
+        if(wasAlive && !IsAlive())
+        {
+            skillctx.koCount++;
+        }
+
+        skillctx.lastKOd = (wasAlive && !IsAlive());
+    }
 
     Debug.Log($"{this.character.characterName} has taken {ctx.finalDamage} from {ctx.attacker.character.characterName}'s {ctx.source}!");
 

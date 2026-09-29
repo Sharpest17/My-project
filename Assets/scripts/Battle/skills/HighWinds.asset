@@ -10,20 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
-  m_Name: FireBall
+  m_Name: HighWinds
   m_EditorClassIdentifier: 
-  skillName: Fire Ball
-  power: 15
+  skillName: High Winds
+  power: 5
   attackingStat: 2
   defendStat: 4
-  targetType: 2
-  actionCost: 1000
+  targetType: 1
+  actionCost: 500
   baseHit: 1000
-  baseCrit: 20
-  spCost: 5
+  baseCrit: 30
+  spCost: 0
   tpCost: 0
   tags: 32
   intents: 1
-  damageType: 1
+  damageType: 3
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
+  - {fileID: 11400000, guid: 2d51243f933239d4e99b42250eaf2fa8, type: 2}
+  - {fileID: 11400000, guid: 360558fa08af6ab4f821ddfa47e1cf7e, type: 2}

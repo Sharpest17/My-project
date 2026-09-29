@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9900689c785632245890e9ef5c176bff, type: 3}
-  m_Name: Stealth
+  m_Script: {fileID: 11500000, guid: 121697a141940cd45b6597999c42ee21, type: 3}
+  m_Name: TPOnCritKill
   m_EditorClassIdentifier: 
-  hooks: 
-  tags: 
-  Name: Stealth
-  baseDuration: 3
-  duration: 3
-  durationType: 1
-  count: 0
-  IsExpired: 0
+  tp: 1
+  tpFixed: 0
+  sp: 0
+  spFixed: 1
+  affectTarget: 0
+  crits: 1
+  KOs: 1
