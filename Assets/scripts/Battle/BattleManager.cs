@@ -86,8 +86,8 @@ public void StartBattle(
 
     teams.Add(playerTeam);
     teams.Add(enemyTeam);
-    playerTeam.currentTP = 5;
     playerTeam.currentTP = 3;
+    enemyTeam.currentTP = 3;
 
     foreach (var ally in playerParty)
     {
@@ -131,7 +131,7 @@ public void StartBattle(
 }
     foreach (var combatant in combatants)
 {
-    combatant.actionValue = BaseActionCost / combatant.GetModifiedCombatStat(StatType.ActionSpeed);
+    combatant.actionValue = BaseActionCost;
 }
     Debug.Log($"combatant count: {combatants.Count}");
     battleUI.SetupCombatHUD(combatants);
@@ -151,6 +151,7 @@ public void StartTurn(Combatant current)
     if (!current.IsAlive())
     {
         Debug.Log($"{current.character.characterName} is currently down, skipped");
+        UseTurn(current);
         EndTurn(current);
         return;
     }
@@ -162,6 +163,7 @@ public void StartTurn(Combatant current)
 
     if(ctx.cancelled){
         Debug.Log($"{current.character.characterName} cannot act.");
+        UseTurn(current);
         EndTurn(current);
         return;
     }
@@ -177,6 +179,7 @@ public void StartTurn(Combatant current)
      if (chosenSkill == null)
     {
         Debug.Log("no skills available, what a dummy!");
+        UseTurn(current);
         EndTurn(current);
         return;
     }
@@ -199,7 +202,7 @@ private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
     skill.Use(user, targets, skillCtx);
     user.SpendResources(skill);
     battleUI.RefreshCombatHUD();
-    user.actionValue += skill.actionCost / user.GetModifiedCombatStat(StatType.ActionSpeed);
+    UseTurn(user, skill.actionValueMultiplier);
 
     CheckBattleEnd();
     EndTurn(user);
@@ -219,10 +222,18 @@ public void TriggerSkill(Combatant user, Skill skill, Combatant target)
     CheckBattleEnd();
 }
 
+public void UseTurn(
+    Combatant combatant,
+    float multiplier = 1f)
+{
+    combatant.actionValue =
+        BaseActionCost * multiplier;
+}
+
 public void EndTurn(Combatant combatant)
 {
-    combatant.actionValue += BaseActionCost/combatant.GetModifiedCombatStat(StatType.ActionSpeed);
     TurnContext ctx = new TurnContext(combatant, turnCount);
+    modifierManager.Broadcast(HookType.TurnEnd, ctx);
     combatant.TickStatuses(DurationType.TurnEnd);
     ClearAllStatuses();
     if (!battleActive)
@@ -232,32 +243,39 @@ public void EndTurn(Combatant combatant)
 
 public void AdvanceTurn()
 {
-    float smallestAV = float.MaxValue;
+    float smallestTicks = float.MaxValue;
     foreach (var combatant in combatants)
     {
         if (!combatant.IsAlive())
             continue;
-
-        if (combatant.actionValue < smallestAV)
-        {
-            smallestAV = combatant.actionValue;
-        }
+        float ticksTilTurn = Mathf.Max(1, combatant.actionValue / combatant.GetModifiedCombatStat(StatType.ActionSpeed));
+        if(ticksTilTurn <smallestTicks)
+            {
+                smallestTicks = ticksTilTurn;
+            }
     }
     foreach(var combatant in combatants)
         {
-            combatant.actionValue = combatant.actionValue - smallestAV;
+            combatant.actionValue -= combatant.GetModifiedCombatStat(StatType.ActionSpeed)*smallestTicks;
+
+            if (combatant.actionValue <= 0.01f)
+            {
+            combatant.actionValue = 0;
+            }
         }
 }
 
 public void ProcessTurns()
 {
-    // TODO:
-// Future AV refactor:
-// Store raw AV values and calculate effective
-// time remaining using current Action Speed.
-// This will allow mid-turn Speed/Move changes
-// to immediately affect turn order.
+    foreach (var combatant in combatants)
+        {
+            Debug.Log($"{combatant.character.characterName} av is {combatant.actionValue}");
+        }
     AdvanceTurn();
+    foreach (var combatant in combatants)
+        {
+            Debug.Log($"{combatant.character.characterName} av is {combatant.actionValue}");
+        }
     
     foreach (var combatant in combatants)
     {

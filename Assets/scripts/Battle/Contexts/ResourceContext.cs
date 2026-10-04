@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ResourceContext : CombatContext
 {
-    public Combatant receiver;
 
     public int finalSP;
     public int finalTP;
@@ -19,7 +18,7 @@ public class ResourceContext : CombatContext
         bool tpFixed)
     {
         attacker = source;
-        this.receiver = receiver;
+        this.target = receiver;
 
         finalSP = spGain;
         finalTP = tpGain;

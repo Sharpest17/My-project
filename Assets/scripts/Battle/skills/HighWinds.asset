@@ -20,7 +20,7 @@ MonoBehaviour:
   actionCost: 500
   baseHit: 1000
   baseCrit: 30
-  spCost: 0
+  spCost: 4
   tpCost: 0
   tags: 32
   intents: 1

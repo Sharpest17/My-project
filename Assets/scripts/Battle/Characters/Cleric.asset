@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cleric
   m_EditorClassIdentifier: 
   characterName: Cleric
-  isPlayerControlled: 1
+  isPlayerControlled: 0
   baseMaxHP: 20
   baseStrength: 3
   baseMagic: 6
@@ -26,4 +26,5 @@ MonoBehaviour:
   maxSP: 0
   skills:
   - {fileID: 11400000, guid: f4da89e0b9e579f44ac967f27544bd3d, type: 2}
+  - {fileID: 11400000, guid: f858d8031c630b94f86a0c62c031d5eb, type: 2}
   passives: []

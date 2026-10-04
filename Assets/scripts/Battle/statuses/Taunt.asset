@@ -15,8 +15,8 @@ MonoBehaviour:
   hooks: 15000000
   tags: 
   Name: Taunt
-  baseDuration: 3
-  duration: 3
-  durationType: 0
+  baseDuration: 2
+  duration: 2
+  durationType: 1
   count: 0
   IsExpired: 0

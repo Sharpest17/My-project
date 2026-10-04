@@ -15,8 +15,8 @@ MonoBehaviour:
   hooks: 15000000
   tags: 
   Name: Obstruct
-  baseDuration: 3
-  duration: 3
+  baseDuration: 1
+  duration: 1
   durationType: 0
   count: 0
   IsExpired: 0

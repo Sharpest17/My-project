@@ -187,6 +187,7 @@ public class Combatant
     if (ctx.dodged)
         {
             Debug.Log($"{ctx.target.character.characterName} dodged!");
+            BattleManager.Instance.modifierManager.Broadcast(HookType.OnMiss, ctx);
             return;
         }
     
@@ -253,9 +254,9 @@ public class Combatant
         GetFinalCost(skill);
 
         currentSP -= cost.finalSPCost;
-        Debug.Log($"current sp is now {currentSP}");
+        Debug.Log($"sp of {character.characterName} is now {currentSP}");
         team.currentTP -= cost.finalTPCost;
-        Debug.Log($"current tp is now {team.currentTP}");
+        Debug.Log($"tp of {character.characterName} is now {team.currentTP}");
     }
 
     public void GainResources(
@@ -321,6 +322,8 @@ public class Combatant
             $"{character.characterName} gained " +
             $"{actualSP} SP and {actualTP} TP"
         );
+        Debug.Log($"sp of {character.characterName} is now {currentSP}");
+        Debug.Log($"tp of {character.characterName} is now {team.currentTP}");
     }
 
     public void ApplyStatus(StatusContext ctx)

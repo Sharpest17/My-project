@@ -10,7 +10,7 @@ public class Skill : ScriptableObject
     public StatType defendStat;
     public TargetType targetType;
 
-    public float actionCost;
+    public float actionValueMultiplier = 1f;
     public int baseHit;
     public int baseCrit;
     public int spCost;
