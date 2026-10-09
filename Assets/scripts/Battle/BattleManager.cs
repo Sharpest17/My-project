@@ -19,6 +19,7 @@ public class BattleManager : MonoBehaviour
 
     int turnCount = 0;
     private float BaseActionCost = 1000f;
+    public float BaseAVCost => BaseActionCost;
     
 public void EndBattle(bool playersWon)
     {
