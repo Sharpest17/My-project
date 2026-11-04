@@ -30,10 +30,6 @@ public class CloseSave : PassiveSkill
         if(hook == HookType.ModifyResourceGain && ctx.target.IsAlly(owner))
         {
             ResourceContext recCtx = ctx as ResourceContext;
-            Debug.Log($"recCtx null: {recCtx == null}");
-Debug.Log($"target null: {recCtx?.target == null}");
-Debug.Log($"owner null: {owner == null}");
-Debug.Log($"owner team null: {owner?.team == null}");
             if(recCtx == null)
     return;
             if(owner.team.currentTP < 5)

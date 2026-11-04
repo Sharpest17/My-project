@@ -145,6 +145,7 @@ public void StartTurn(Combatant current)
     if (combatants.Count == 0)
         return;
     TurnContext ctx = new TurnContext(current, turnCount);
+    modifierManager.Broadcast(HookType.TurnStart,ctx);
     turnCount++;
     current.TickStatuses(DurationType.TurnStart);
     ClearAllStatuses();
@@ -171,6 +172,7 @@ public void StartTurn(Combatant current)
 
     if (current.isPlayerControlled)
 {
+    battleUI.currentCombatant = current;
     battleUI.ShowSkills(current);
     return;
 }

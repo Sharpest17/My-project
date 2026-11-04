@@ -23,6 +23,14 @@ public class BattleUI : MonoBehaviour
     private List<TeamHud> teamDisplays = new List<TeamHud>();
 
     public GameObject combatantDisplayPrefab;
+
+    public UIState currentState;
+
+    public Combatant currentCombatant;  
+
+    public Skill selectedSkill;
+    public List<Combatant> selectedTargets = new List<Combatant>();
+
     public void ShowSkills(Combatant player)
 {
     skillPanel.gameObject.SetActive(true);
@@ -46,6 +54,7 @@ public class BattleUI : MonoBehaviour
         {
             Debug.Log($"Selected {skill.skillName}");
             skillPanel.gameObject.SetActive(false);
+            selectedSkill =skill;
             battleManager.OnSkillSelected(skill);
         });
         // set button text
@@ -69,12 +78,36 @@ public class BattleUI : MonoBehaviour
 {
         Debug.Log($"Selected target: {target.character.characterName}");
         targetPanel.gameObject.SetActive(false);
+        selectedTargets.Add(target);
+        foreach (var combatant in selectedTargets)
+        {
+            Debug.Log(combatant.character.characterName);
+        }
         battleManager.OnTargetsSelected(
         new List<Combatant> { target }
         );
         });
     }
+        GameObject cancelButton = 
+            Instantiate(skillButtonPrefab, targetPanel);
+            cancelButton.GetComponentInChildren<TMP_Text>().text = "cancel";
+        Button cancel = cancelButton.GetComponent<Button>();
+        cancel.onClick.AddListener(() =>
+{
+        Debug.Log($"target selection cancelled");
+        CancelSelection();
+        });
     }
+    public void CancelSelection()
+{
+    selectedSkill = null;
+    selectedTargets.Clear();
+
+    currentState = UIState.skillselection;
+
+    ClearPanel(targetPanel);
+    ShowSkills(currentCombatant);
+}
 
 private void ClearPanel(Transform panel)
 {
