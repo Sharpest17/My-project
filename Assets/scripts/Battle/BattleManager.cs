@@ -17,6 +17,8 @@ public class BattleManager : MonoBehaviour
 
     public ModifierManager modifierManager;
 
+    public bool victory;
+
     int turnCount = 0;
     private float BaseActionCost = 1000f;
     public float BaseAVCost => BaseActionCost;
@@ -25,6 +27,7 @@ public class BattleManager : MonoBehaviour
     
 public void EndBattle(bool playersWon)
     {
+        
         if (playersWon)
         {
         Debug.Log("Victory! Reward player.");
@@ -34,6 +37,9 @@ public void EndBattle(bool playersWon)
         Debug.Log("Defeat! Return to last checkpoint.");
     }
     // Reset battle state if needed
+        teams.Clear();
+        battleUI.ClearCombatHUD();
+        GameManager.Instance.EndEncounter(playersWon);
         currentCombatant = null;
         gameManager.EnterExploration();
     }
@@ -227,8 +233,6 @@ private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
     AddMessage($"{user.character.name}'s turn is done");
     Debug.Log($"current log count is {combatLog.Count}");
     UseTurn(user, skill.actionValueMultiplier);
-
-    CheckBattleEnd();
     EndTurn(user);
 }
 
@@ -242,8 +246,6 @@ public void TriggerSkill(Combatant user, Skill skill, Combatant target)
 
     skill.Use(user, targets, skillCtx);
     battleUI.RefreshCombatHUD();
-
-    CheckBattleEnd();
 }
 
 public void UseTurn(
@@ -341,8 +343,11 @@ public void ClearAllStatuses()
         }
     }
 
-    private void CheckBattleEnd()
+    public bool CheckBattleEnd()
 {
+    if (!battleActive)
+        return true;
+        
     bool anyPlayersAlive =
         combatants.Any(c =>
             c.IsPlayerControlled() &&
@@ -358,10 +363,18 @@ public void ClearAllStatuses()
         battleActive = false;
 
         bool playersWon = anyPlayersAlive;
-        teams.Clear();
-        battleUI.ClearCombatHUD();
-        GameManager.Instance.EndEncounter(playersWon);
+        victory = anyPlayersAlive;
+        if(playersWon)
+        {
+            AddMessage("victory!");
+        }
+            else
+            {
+                AddMessage("defeat...");
+            }
+        return true;
     }
+    return false;
 }
 
     public void OnSkillSelected(Skill skill)

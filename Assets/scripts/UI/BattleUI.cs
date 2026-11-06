@@ -36,6 +36,7 @@ public class BattleUI : MonoBehaviour
     public Combatant currentCombatant;  
 
     public Skill selectedSkill;
+    
     public List<Combatant> selectedTargets = new List<Combatant>();
 
     public void ShowSkills(Combatant player)
@@ -149,7 +150,17 @@ public class BattleUI : MonoBehaviour
             OnMessageContinue();
         });
         }
-        else
+        else if(battleManager.CheckBattleEnd())
+        {
+            if (battleManager.combatLog.Count > 0)
+            {
+                DisplayLogs();
+            }
+            else
+            {
+            battleManager.EndBattle(battleManager.victory);
+            }
+        }else
         {
             battleManager.ContinueTurn();
         }

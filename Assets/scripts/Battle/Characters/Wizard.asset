@@ -16,7 +16,7 @@ MonoBehaviour:
   isPlayerControlled: 0
   baseMaxHP: 20
   baseStrength: 1
-  baseMagic: 9
+  baseMagic: 30
   baseDefense: 3
   baseResistance: 8
   baseSpeed: 15
