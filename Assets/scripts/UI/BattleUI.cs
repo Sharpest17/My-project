@@ -19,6 +19,8 @@ public class BattleUI : MonoBehaviour
 
     public Transform tpPanel;
     public Transform TurnPanel;
+
+    public Transform LogPanel;
     public GameObject teamHudPrefab;
 
     private List<CombatantHud> combatantDisplays = new List<CombatantHud>();
@@ -26,6 +28,8 @@ public class BattleUI : MonoBehaviour
     private List<TeamHud> teamDisplays = new List<TeamHud>();
 
     public GameObject combatantDisplayPrefab;
+
+    public GameObject combatLogPrefab;
 
     public UIState currentState;
 
@@ -131,6 +135,29 @@ public class BattleUI : MonoBehaviour
     ClearPanel(targetPanel);
     ShowSkills(currentCombatant);
 }
+    public void DisplayLogs()
+    {
+        ClearPanel(LogPanel);
+        if(battleManager.combatLog.Count >0)
+        {
+            string message = battleManager.combatLog.Dequeue();
+            GameObject Log = Instantiate(combatLogPrefab, LogPanel);
+            Log.GetComponentInChildren<TMP_Text>().text = message;
+            Button continueButton = Log.GetComponent<Button>();
+            continueButton.onClick.AddListener(() =>
+        {
+            OnMessageContinue();
+        });
+        }
+        else
+        {
+            battleManager.ContinueTurn();
+        }
+    }
+    public void OnMessageContinue()
+{
+    DisplayLogs();
+}
 
 private void ClearPanel(Transform panel)
 {
@@ -207,6 +234,7 @@ foreach (Team team in teams)
     ClearPanel(enemyPanel);
     ClearPanel(tpPanel);
     ClearPanel(TurnPanel);
+    ClearPanel(LogPanel);
 
     combatantDisplays.Clear();
 

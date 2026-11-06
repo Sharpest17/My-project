@@ -20,6 +20,8 @@ public class BattleManager : MonoBehaviour
     int turnCount = 0;
     private float BaseActionCost = 1000f;
     public float BaseAVCost => BaseActionCost;
+
+    public Queue<string> combatLog = new Queue<string>();
     
 public void EndBattle(bool playersWon)
     {
@@ -139,6 +141,11 @@ public void StartBattle(
     battleUI.SetupTPHUD(teams);
     ProcessTurns();
 }
+
+public void AddMessage(string message)
+{
+    combatLog.Enqueue(message);
+}
 public void StartTurn(Combatant current)
 {
     battleUI.UpdateTurnOrder(GetTurnOrder());
@@ -170,8 +177,19 @@ public void StartTurn(Combatant current)
         EndTurn(current);
         return;
     }
+    if(combatLog.Count >0)
+        {
+            battleUI.DisplayLogs();
+            return;
+        }
 
-    if (current.isPlayerControlled)
+    Debug.Log("no messages, continue turn normally");
+   ContinueTurn();
+}
+public void ContinueTurn()
+    {
+    Combatant current = currentCombatant;
+         if (current.isPlayerControlled)
 {
     battleUI.currentCombatant = current;
     battleUI.ShowSkills(current);
@@ -191,7 +209,7 @@ public void StartTurn(Combatant current)
     List<Combatant> targets = current.ChooseTargets(this, chosenSkill);
     
     UseSkill(current, chosenSkill, targets);
-}
+    }
 
 private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
 {
@@ -206,6 +224,8 @@ private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
     skill.Use(user, targets, skillCtx);
     user.SpendResources(skill);
     battleUI.RefreshCombatHUD();
+    AddMessage($"{user.character.name}'s turn is done");
+    Debug.Log($"current log count is {combatLog.Count}");
     UseTurn(user, skill.actionValueMultiplier);
 
     CheckBattleEnd();

@@ -24,7 +24,7 @@ public class CloseSave : PassiveSkill
 }
         if(hook == HookType.OnMiss && ctx.target == owner)
         {
-            Debug.Log($"owner of close save dodged, gaining sp!");
+            BattleManager.Instance.AddMessage($"close save triggers, sp restored!");
             owner.GainResources(owner, 1, 0, false, true);
         }
         if(hook == HookType.ModifyResourceGain && ctx.target.IsAlly(owner))

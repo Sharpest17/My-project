@@ -4,7 +4,7 @@ using UnityEngine;
 public class Amazing : PassiveSkill
 {
     private int charge;
-    private int threshold = 3;
+    private int threshold = 2;
 
     public Skill enhanced;
     public override void OnHook(HookType hook, CombatContext ctx)
@@ -36,6 +36,7 @@ public class Amazing : PassiveSkill
             
             if(skillctx.skill == enhanced && charge >= threshold)
             {
+                BattleManager.Instance.AddMessage($"Mazano: BEHOLD! THE PRESTIGE!");
                 charge -= threshold;
             }
         }

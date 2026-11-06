@@ -182,11 +182,13 @@ public class Combatant
     
     if(ctx.denied)
         {
+            BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName}'s attack was denied");
             return;
         }
+        BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} attacks {ctx.target.character.characterName}");
     if (ctx.dodged)
         {
-            Debug.Log($"{ctx.target.character.characterName} dodged!");
+            BattleManager.Instance.AddMessage($"{ctx.target.character.characterName} dodged {ctx.attacker.character.characterName}'s attack!");
             BattleManager.Instance.modifierManager.Broadcast(HookType.OnMiss, ctx);
             return;
         }
@@ -195,6 +197,7 @@ public class Combatant
     
     BattleManager.Instance.modifierManager.Broadcast(HookType.BeforeDamage, ctx);
     //applies damage
+    BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} dealt {ctx.finalDamage-ctx.blockedDamage} to {ctx.target.character.characterName}");
     currentHP -= (ctx.finalDamage- ctx.blockedDamage);
     if (currentHP < 0)
         currentHP = 0;
@@ -206,6 +209,7 @@ public class Combatant
 
         if(ctx.critical)
         {
+            BattleManager.Instance.AddMessage("Critical hit!");
             skillctx.critCount++;
         }
 
@@ -213,6 +217,7 @@ public class Combatant
 
         if(wasAlive && !IsAlive())
         {
+            BattleManager.Instance.AddMessage($"{ctx.target.character.characterName} was knocked out!");
             skillctx.koCount++;
         }
 
@@ -243,8 +248,7 @@ public class Combatant
     if (currentHP > GetModifiedStat(StatType.MaxHP))
         currentHP = GetModifiedStat(StatType.MaxHP);
 
-        Debug.Log($"{ctx.attacker.character.characterName} healed {ctx.finalHeal} HP to {character.characterName}!");
-        Debug.Log($"current hp is now {currentHP}, max hp is {GetModifiedStat(StatType.MaxHP)}");
+        BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} healed {ctx.finalHeal} HP to {character.characterName}!");
         
     }
 
@@ -254,9 +258,15 @@ public class Combatant
         GetFinalCost(skill);
 
         currentSP -= cost.finalSPCost;
-        Debug.Log($"sp of {character.characterName} is now {currentSP}");
+        if(cost.finalSPCost >0)
+        {
+            BattleManager.Instance.AddMessage($"sp of {character.characterName} is now {currentSP}");
+        }
         team.currentTP -= cost.finalTPCost;
-        Debug.Log($"tp of {character.characterName} is now {team.currentTP}");
+        if(cost.finalTPCost >0)
+        {
+            BattleManager.Instance.AddMessage($"tp of {character.characterName} is now {team.currentTP}");
+        }
     }
 
     public void GainResources(
