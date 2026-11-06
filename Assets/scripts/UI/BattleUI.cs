@@ -12,10 +12,13 @@ public class BattleUI : MonoBehaviour
 
     public GameObject skillButtonPrefab;
 
+    public GameObject turnDisplayPrefab;
+
     public Transform allyPanel;
     public Transform enemyPanel;
 
     public Transform tpPanel;
+    public Transform TurnPanel;
     public GameObject teamHudPrefab;
 
     private List<CombatantHud> combatantDisplays = new List<CombatantHud>();
@@ -98,6 +101,26 @@ public class BattleUI : MonoBehaviour
         CancelSelection();
         });
     }
+
+    public void UpdateTurnOrder(List<TicksTilTurn> turnOrder)
+{
+    ClearPanel(TurnPanel);
+
+    foreach (TicksTilTurn entry in turnOrder)
+    {
+        Debug.Log(
+            $"{entry.combatant.character.characterName}: " +
+            $"{entry.ticksRemaining:F1} ticks remaining"
+        );
+        GameObject turnDisplay = Instantiate(turnDisplayPrefab, TurnPanel);
+        TurnOrderDisplay display =
+            turnDisplay.GetComponent<TurnOrderDisplay>();
+        
+        display.Setup(entry);
+        // Instantiate turn order display
+        // Set portrait/name
+    }
+}
     public void CancelSelection()
 {
     selectedSkill = null;
@@ -183,6 +206,7 @@ foreach (Team team in teams)
     ClearPanel(allyPanel);
     ClearPanel(enemyPanel);
     ClearPanel(tpPanel);
+    ClearPanel(TurnPanel);
 
     combatantDisplays.Clear();
 

@@ -141,6 +141,7 @@ public void StartBattle(
 }
 public void StartTurn(Combatant current)
 {
+    battleUI.UpdateTurnOrder(GetTurnOrder());
     currentCombatant = current;
     if (combatants.Count == 0)
         return;
@@ -289,6 +290,27 @@ public void ProcessTurns()
         }
     }
 }
+
+public List<TicksTilTurn> GetTurnOrder()
+    {
+        List<TicksTilTurn> turnOrder = new List<TicksTilTurn>();
+
+        foreach (Combatant combatant in combatants)
+    {
+        float actionSpeed =
+            combatant.GetModifiedCombatStat(StatType.ActionSpeed);
+
+        float ticksRemaining = actionSpeed > 0
+            ? combatant.actionValue / actionSpeed
+            : float.MaxValue;
+
+        turnOrder.Add(new TicksTilTurn(combatant, ticksRemaining));
+    }
+
+    return turnOrder
+        .OrderBy(entry => entry.ticksRemaining)
+        .ToList();
+    }
 
 
 public void ClearAllStatuses()

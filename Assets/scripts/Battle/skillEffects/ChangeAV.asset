@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b3c000632404e43bb8718012ccbc6c, type: 3}
   m_Name: ChangeAV
   m_EditorClassIdentifier: 
-  ActionValuePercentage: -1
+  ActionValuePercentage: 1
