@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
+  m_Name: Subject
+  m_EditorClassIdentifier: 
+  skillName: Subject
+  power: 4
+  attackingStat: 2
+  defendStat: 4
+  targetType: 1
+  actionValueMultiplier: 1
+  baseHit: 75
+  baseCrit: 10
+  spCost: 0
+  tpCost: 0
+  tags: 128
+  intents: 1
+  damageType: 10
+  effects:
+  - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
+  - {fileID: 11400000, guid: 63b87c96e45c07d4d9cafdbf81745200, type: 2}

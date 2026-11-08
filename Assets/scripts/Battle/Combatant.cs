@@ -204,6 +204,14 @@ public class Combatant
 
     if(skillctx != null)
     {
+        if(ctx.denied||ctx.dodged)
+            {
+                skillctx.lastAttackDamage = 0;
+            }
+            else
+            {
+                skillctx.lastAttackDamage =ctx.finalDamage;
+            }
         skillctx.hitCount++;
         skillctx.lastHit = true;
 
@@ -258,15 +266,7 @@ public class Combatant
         GetFinalCost(skill);
 
         currentSP -= cost.finalSPCost;
-        if(cost.finalSPCost >0)
-        {
-            BattleManager.Instance.AddMessage($"sp of {character.characterName} is now {currentSP}");
-        }
         team.currentTP -= cost.finalTPCost;
-        if(cost.finalTPCost >0)
-        {
-            BattleManager.Instance.AddMessage($"tp of {character.characterName} is now {team.currentTP}");
-        }
     }
 
     public void GainResources(
@@ -327,13 +327,6 @@ public class Combatant
                 0,
                 team.maxTP
             );
-
-        Debug.Log(
-            $"{character.characterName} gained " +
-            $"{actualSP} SP and {actualTP} TP"
-        );
-        Debug.Log($"sp of {character.characterName} is now {currentSP}");
-        Debug.Log($"tp of {character.characterName} is now {team.currentTP}");
     }
 
     public void ApplyStatus(StatusContext ctx)
@@ -345,6 +338,7 @@ public class Combatant
             if(exists != null)
             {
                 bool refreshed = true;
+                BattleManager.Instance.AddMessage($"{this.character.characterName}'s {ctx.status.Name} was refreshed");
                 if (ctx.status.count > exists.count)
                 {
                     exists.count = ctx.status.count;
@@ -366,7 +360,7 @@ public class Combatant
                 return;
             }
 
-            //Debug.Log($"Applying status {ctx.status.Name} to {this.character.characterName}");
+            BattleManager.Instance.AddMessage($"{this.character.characterName} was given {ctx.status.Name}");
             statusEffects.Add(ctx.status);
             BattleManager.Instance.modifierManager.Broadcast(HookType.StatusApplied, ctx);
             //Debug.Log($"Statuses now: {this.statusEffects.Count}");
