@@ -19,6 +19,7 @@ public class HealContext : CombatContext
     public bool autoCrit;
 
     public bool canCrit;
+    public int bonusHeal;
 
     public HealContext(Combatant healer, Combatant target, int setHeal, StatType statType = StatType.Magic, Skill skill = null)
     {

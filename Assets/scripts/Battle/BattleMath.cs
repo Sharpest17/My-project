@@ -77,6 +77,8 @@ public static class BattleMath
         float finalCrit = (baseCrit+ctx.critMod) -(baseCritAvoid+ctx.critAvoMod)+ctx.skill.baseCrit;
         ctx.critical = ctx.autoCrit || (Random.Range(0f, 100f) < finalCrit);
 
+        //implement canheal variable properly
+
         float critFactor = ctx.critical ? (1f + ctx.critBonus) : 1f;
 
         Debug.Log($"Base Crit: {baseCrit}");
@@ -89,12 +91,12 @@ public static class BattleMath
         }
 
         float finalHeal = 
-        (scaling
+        ((scaling
         * (ctx.basePower+ctx.powerMod)
         * (1+ctx.outHeal)
         * (1+ctx.inHeal)
         * (critFactor))
-               / 10f;
+               / 10f)+ctx.bonusHeal;
 
         ctx.finalHeal = Mathf.RoundToInt(finalHeal);
 
@@ -115,7 +117,7 @@ public static class BattleMath
         *(1+ctx.inShield)
         *(1+.2f*(ctx.count+ctx.countMod))
         );
-        Debug.Log($"count: {ctx.count+ctx.countMod+5}, scaling stat: {ctx.scaling}, scaling stat value: {scaling}");
+        Debug.Log($"count: {ctx.count+ctx.countMod}, scaling stat: {ctx.scaling}, scaling stat value: {scaling}");
 
         ctx.finalShield = Mathf.RoundToInt(finalShield);
     }

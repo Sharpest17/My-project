@@ -27,3 +27,4 @@ MonoBehaviour:
   damageType: 0
   effects:
   - {fileID: 11400000, guid: e6a2eb7232127684fb00353aec46053d, type: 2}
+  - {fileID: 11400000, guid: 5bb27d722c2ed3647bc259848a04b584, type: 2}

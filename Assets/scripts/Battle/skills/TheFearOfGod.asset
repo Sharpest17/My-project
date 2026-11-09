@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
+  m_Name: TheFearOfGod
+  m_EditorClassIdentifier: 
+  skillName: The Fear Of God
+  power: 8
+  attackingStat: 2
+  defendStat: 4
+  targetType: 1
+  actionValueMultiplier: 1
+  baseHit: 80
+  baseCrit: 10
+  spCost: 0
+  tpCost: 0
+  tags: 160
+  intents: 9
+  damageType: 3
+  effects:
+  - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
+  - {fileID: 11400000, guid: 5325b821f908a4d459d6fb7cfe5fe1c2, type: 2}
+  - {fileID: 11400000, guid: 3a7cde1616e86c64c931048fa33d420e, type: 2}

@@ -19,6 +19,7 @@ public class BuffOrDebuff : StatusEffect
             {
                 statCtx.multiplier += mod.multiplier;
                 statCtx.baseBonus += mod.baseBonus;
+                statCtx.finalBonus += mod.finalBonus;
             }
         }
         }

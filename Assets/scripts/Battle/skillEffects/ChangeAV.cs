@@ -13,7 +13,7 @@ public class ChangeAV : SkillEffect
         }
         if(ActionValuePercentage<0)
         {
-            BattleManager.Instance.AddMessage($"{user.character.characterName} delayed {target.character.characterName} by {ActionValuePercentage*100}%");
+            BattleManager.Instance.AddMessage($"{user.character.characterName} delayed {target.character.characterName} by {ActionValuePercentage*(-100)}%");
         }
         
     }
