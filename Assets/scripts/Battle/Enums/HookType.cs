@@ -22,6 +22,8 @@ public enum HookType
     TurnEnd,
     
     UseSkill,
+    SkillUsed,
+    TriggerSkill,
     SkillTriggered,
 
     StatusModify,

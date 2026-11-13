@@ -22,10 +22,11 @@ MonoBehaviour:
   baseSpeed: 10
   baseSkill: 15
   baseLuck: 8
-  baseMove: 4
+  baseMove: 10
   maxSP: 15
   skills:
   - {fileID: 11400000, guid: a4654935b7a41fd448e859f850bb8aaf, type: 2}
   - {fileID: 11400000, guid: 8a82cb20401781142a2bdde55e6d864e, type: 2}
   - {fileID: 11400000, guid: 2fb5300396280774b996ea30c7b99c4f, type: 2}
-  passives: []
+  passives:
+  - {fileID: 11400000, guid: cee230c87e0d6714bacae602ae74084c, type: 2}

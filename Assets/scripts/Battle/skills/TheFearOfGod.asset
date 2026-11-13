@@ -20,8 +20,8 @@ MonoBehaviour:
   actionValueMultiplier: 1
   baseHit: 80
   baseCrit: 10
-  spCost: 0
-  tpCost: 0
+  spCost: 5
+  tpCost: 5
   tags: 160
   intents: 9
   damageType: 3

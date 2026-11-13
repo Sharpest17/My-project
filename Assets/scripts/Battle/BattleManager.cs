@@ -229,6 +229,7 @@ private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
 
     skill.Use(user, targets, skillCtx);
     user.SpendResources(skill);
+    modifierManager.Broadcast(HookType.SkillUsed, skillCtx);
     battleUI.RefreshCombatHUD();
     AddMessage($"{user.character.name}'s turn is done");
     Debug.Log($"current log count is {combatLog.Count}");
@@ -275,6 +276,7 @@ public void AdvanceTurn()
         if (!combatant.IsAlive())
             continue;
         float ticksTilTurn = Mathf.Max(1, combatant.actionValue / combatant.GetModifiedCombatStat(StatType.ActionSpeed));
+        Debug.Log($"{combatant.character.characterName}'s action speed is {combatant.GetModifiedCombatStat(StatType.ActionSpeed)}");
         if(ticksTilTurn <smallestTicks)
             {
                 smallestTicks = ticksTilTurn;
