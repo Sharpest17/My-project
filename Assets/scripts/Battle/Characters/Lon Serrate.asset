@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
+  m_Name: Lon Serrate
+  m_EditorClassIdentifier: 
+  characterName: Lon
+  isPlayerControlled: 0
+  baseMaxHP: 40
+  baseStrength: 14
+  baseMagic: 3
+  baseDefense: 9
+  baseResistance: 4
+  baseSpeed: 14
+  baseSkill: 14
+  baseLuck: 14
+  baseMove: 7
+  maxSP: 15
+  skills: []
+  passives:
+  - {fileID: 11400000, guid: 79f460f8b9ad96d4880795ee4bcccfe8, type: 2}

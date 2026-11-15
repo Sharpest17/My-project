@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Basic Attack
   power: 5
-  attackingStat: 1
-  defendStat: 3
+  attackingStat: 2
+  defendStat: 4
   targetType: 1
-  actionCost: 1000
-  baseHit: 50
-  baseCrit: 10
+  actionValueMultiplier: 1
+  baseHit: 75
+  baseCrit: 15
   spCost: 0
   tpCost: 0
-  tags: 9
+  tags: 12
   intents: 1
   damageType: 0
   effects:

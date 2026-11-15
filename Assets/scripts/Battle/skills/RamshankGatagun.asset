@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
+  m_Name: RamshankGatagun
+  m_EditorClassIdentifier: 
+  skillName: Gatagun
+  power: 2
+  attackingStat: 2
+  defendStat: 4
+  targetType: 3
+  actionValueMultiplier: 1.25
+  baseHit: 80
+  baseCrit: 20
+  spCost: 0
+  tpCost: 0
+  tags: 288
+  intents: 1
+  damageType: 1
+  effects:
+  - {fileID: 11400000, guid: 247f53ecbf247c447ae00fba34007f99, type: 2}

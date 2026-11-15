@@ -17,7 +17,7 @@ MonoBehaviour:
   attackingStat: 1
   defendStat: 3
   targetType: 1
-  actionCost: 1000
+  actionValueMultiplier: 1
   baseHit: 80
   baseCrit: 10
   spCost: 0
@@ -28,3 +28,4 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
   - {fileID: 11400000, guid: dc1a9cb7575e43146bfd7ff78b499d50, type: 2}
+  - {fileID: 11400000, guid: e94c8f57095d207429cb70e5de475719, type: 2}

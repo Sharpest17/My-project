@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
+  m_Name: Burn Down
+  m_EditorClassIdentifier: 
+  skillName: Burn Down
+  power: 15
+  attackingStat: 1
+  defendStat: 3
+  targetType: 2
+  actionValueMultiplier: 1.5
+  baseHit: 80
+  baseCrit: 40
+  spCost: 0
+  tpCost: 1
+  tags: 32
+  intents: 1
+  damageType: 1
+  effects:
+  - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
+  - {fileID: 11400000, guid: fb1c21a0300ae8343a30e4d1937ea18a, type: 2}

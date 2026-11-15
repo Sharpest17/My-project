@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3744708c59bfdaa4e93fc186dd07ed6b, type: 3}
   m_Name: GainResources
   m_EditorClassIdentifier: 
-  SPamount: 3
-  TPamount: 2
+  SPamount: 0
+  TPamount: 1
   SPfixed: 0
   TPfixed: 1
   affectTarget: 0

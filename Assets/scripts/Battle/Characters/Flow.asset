@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
+  m_Name: Flow
+  m_EditorClassIdentifier: 
+  characterName: Flow
+  isPlayerControlled: 1
+  baseMaxHP: 30
+  baseStrength: 10
+  baseMagic: 3
+  baseDefense: 14
+  baseResistance: 2
+  baseSpeed: 19
+  baseSkill: 14
+  baseLuck: 6
+  baseMove: 7
+  maxSP: 15
+  skills:
+  - {fileID: 11400000, guid: 3ec4ed6527333f14eacf24ae4741ccca, type: 2}
+  - {fileID: 11400000, guid: b23cdbb76dcd69444a0fd9721d15ad0b, type: 2}
+  - {fileID: 11400000, guid: a076a158c3a3a7f4c9b555f6dda8b979, type: 2}
+  passives:
+  - {fileID: 11400000, guid: 4d4c2258a9044814ebebeff12b7c2654, type: 2}

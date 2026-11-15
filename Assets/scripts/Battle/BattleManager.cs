@@ -243,9 +243,11 @@ public void TriggerSkill(Combatant user, Skill skill, Combatant target)
 
     SkillContext skillCtx = new SkillContext(user, skill);
 
-    modifierManager.Broadcast(HookType.SkillTriggered, skillCtx);
+    modifierManager.Broadcast(HookType.TriggerSkill, skillCtx);
 
     skill.Use(user, targets, skillCtx);
+
+    modifierManager.Broadcast(HookType.SkillTriggered, skillCtx);
     battleUI.RefreshCombatHUD();
 }
 
@@ -273,8 +275,8 @@ public void AdvanceTurn()
     float smallestTicks = float.MaxValue;
     foreach (var combatant in combatants)
     {
-        if (!combatant.IsAlive())
-            continue;
+      //  if (!combatant.IsAlive())
+     //       continue;
         float ticksTilTurn = Mathf.Max(1, combatant.actionValue / combatant.GetModifiedCombatStat(StatType.ActionSpeed));
         Debug.Log($"{combatant.character.characterName}'s action speed is {combatant.GetModifiedCombatStat(StatType.ActionSpeed)}");
         if(ticksTilTurn <smallestTicks)

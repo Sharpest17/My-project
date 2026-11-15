@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
+  m_Name: Hanpa
+  m_EditorClassIdentifier: 
+  characterName: Hanpa
+  isPlayerControlled: 0
+  baseMaxHP: 40
+  baseStrength: 14
+  baseMagic: 3
+  baseDefense: 9
+  baseResistance: 9
+  baseSpeed: 5
+  baseSkill: 5
+  baseLuck: 10
+  baseMove: 15
+  maxSP: 15
+  skills:
+  - {fileID: 11400000, guid: 1452950e2e8ad5540accc297db25f204, type: 2}
+  - {fileID: 11400000, guid: f4da89e0b9e579f44ac967f27544bd3d, type: 2}
+  passives:
+  - {fileID: 11400000, guid: 7180671fd1ee61344b3f0dd799820e4f, type: 2}
