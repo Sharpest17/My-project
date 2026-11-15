@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 [CreateAssetMenu(fileName = "lifestealOrRecoil", menuName = "RPG/SkillEffect/lifestealOrRecoil")]
 public class lifestealOrRecoil : SkillEffect
@@ -10,7 +12,7 @@ public class lifestealOrRecoil : SkillEffect
     public bool isLifesteal;
     public bool isRecoil;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public override void Apply(Combatant user, Combatant target, Skill skill, SkillContext skillctx)
+    public override void Apply(Combatant user, List<Combatant> targets, Skill skill, SkillContext skillctx)
     {
         if(isLifesteal)
         {

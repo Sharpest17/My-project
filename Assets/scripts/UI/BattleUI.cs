@@ -68,11 +68,19 @@ public class BattleUI : MonoBehaviour
         // set button text
     }
 }
-    public void ShowTargets(List<Combatant> targets)
+    public void ShowTargets(Skill skill, List<Combatant> targets, TargetType targetType)
     {
         //check for if it's an aoe skill, if it is, set one button to select all targets
         targetPanel.gameObject.SetActive(true);
         ClearPanel(targetPanel);
+        ClearPanel(LogPanel);
+        if(skill.skillTip != "")
+        {
+            GameObject Log = Instantiate(combatLogPrefab, LogPanel);
+            Log.GetComponentInChildren<TMP_Text>().text = skill.skillTip;
+        }
+        if(IsTargetable(targetType))
+        {
         foreach (var target in targets)
     {
         GameObject button =
@@ -87,25 +95,84 @@ public class BattleUI : MonoBehaviour
         Debug.Log($"Selected target: {target.character.characterName}");
         targetPanel.gameObject.SetActive(false);
         selectedTargets.Add(target);
-        foreach (var combatant in selectedTargets)
-        {
-            Debug.Log(combatant.character.characterName);
-        }
         battleManager.OnTargetsSelected(
         new List<Combatant> { target }
         );
         });
     }
+        }
+        else
+        {
+            GameObject button =
+            Instantiate(skillButtonPrefab, targetPanel);
+
+        button.GetComponentInChildren<TMP_Text>().text =
+            GetTargetDescription(targetType);
+        Button uiButton = button.GetComponent<Button>();
+
+        uiButton.onClick.AddListener(() =>
+        {
+
+        targetPanel.gameObject.SetActive(false);
+        battleManager.OnTargetsSelected(
+        targets
+        );
+        });
+        }
         GameObject cancelButton = 
             Instantiate(skillButtonPrefab, targetPanel);
             cancelButton.GetComponentInChildren<TMP_Text>().text = "cancel";
         Button cancel = cancelButton.GetComponent<Button>();
         cancel.onClick.AddListener(() =>
-{
+{       
+        ClearPanel(LogPanel);
         Debug.Log($"target selection cancelled");
         CancelSelection();
         });
     }
+
+    public bool IsTargetable(TargetType targetType)
+    {
+        switch(targetType)
+    {
+        case TargetType.SingleEnemy:
+        case TargetType.SingleAlly:
+        case TargetType.DeadAlly:
+            return true;
+            default:
+            return false;
+    }
+    }
+
+    public string GetTargetDescription(TargetType type)
+{
+    switch (type)
+    {
+        case TargetType.SingleEnemy:
+            return "Single Enemy";
+
+        case TargetType.SingleAlly:
+            return "Single Ally";
+
+        case TargetType.DeadAlly:
+            return "Fallen Ally";
+
+        case TargetType.RandomAlly:
+            return "Random Ally";
+
+        case TargetType.RandomEnemy:
+            return "Random Enemy";
+
+        case TargetType.AllEnemies:
+            return "All Enemies";
+
+        case TargetType.AllAllies:
+            return "All Allies";
+
+        default:
+            return type.ToString();
+    }
+}
 
     public void UpdateTurnOrder(List<TicksTilTurn> turnOrder)
 {

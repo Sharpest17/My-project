@@ -390,8 +390,8 @@ public void ClearAllStatuses()
             currentCombatant,
             skill
         );
-    
-    switch(skill.targetType)
+    battleUI.ShowTargets(skill, targets, skill.targetType);
+   /* switch(skill.targetType)
     {
         case TargetType.SingleEnemy:
         case TargetType.SingleAlly:
@@ -399,13 +399,14 @@ public void ClearAllStatuses()
             battleUI.ShowTargets(targets);
             break;
             default:
+            battleUI.ConfirmSkill();
             UseSkill(
                 currentCombatant,
                 pendingSkill,
                 targets
             );
             break;
-    }
+    }*/
 
 }
 

@@ -182,12 +182,14 @@ public class Combatant
     
     if(ctx.denied)
         {
+            skillctx.lastAttackDamage = 0;
             BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName}'s attack was denied");
             return;
         }
         BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} attacks {ctx.target.character.characterName}");
     if (ctx.dodged)
         {
+            skillctx.lastAttackDamage = 0;
             BattleManager.Instance.AddMessage($"{ctx.target.character.characterName} dodged {ctx.attacker.character.characterName}'s attack!");
             BattleManager.Instance.modifierManager.Broadcast(HookType.OnMiss, ctx);
             return;
@@ -198,20 +200,13 @@ public class Combatant
     BattleManager.Instance.modifierManager.Broadcast(HookType.BeforeDamage, ctx);
     //applies damage
     BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} dealt {ctx.finalDamage-ctx.blockedDamage} to {ctx.target.character.characterName}");
-    currentHP -= (ctx.finalDamage- ctx.blockedDamage);
+    currentHP -= ctx.finalDamage- ctx.blockedDamage;
     if (currentHP < 0)
         currentHP = 0;
 
     if(skillctx != null)
     {
-        if(ctx.denied||ctx.dodged)
-            {
-                skillctx.lastAttackDamage = 0;
-            }
-            else
-            {
-                skillctx.lastAttackDamage =ctx.finalDamage;
-            }
+        skillctx.lastAttackDamage =ctx.finalDamage;
         skillctx.hitCount++;
         skillctx.lastHit = true;
 
@@ -229,7 +224,7 @@ public class Combatant
             skillctx.koCount++;
         }
 
-        skillctx.lastKOd = (wasAlive && !IsAlive());
+        skillctx.lastKOd = wasAlive && !IsAlive();
     }
 
     Debug.Log($"{this.character.characterName} has taken {ctx.finalDamage} from {ctx.attacker.character.characterName}'s {ctx.source}!");
@@ -248,10 +243,14 @@ public class Combatant
         }
 }
 
-    public void RestoreHP(HealContext ctx)
+    public void RestoreHP(HealContext ctx, SkillContext skillctx = null)
     {
         int before = currentHP;
     currentHP += ctx.finalHeal;
+    if(skillctx != null)
+        {
+            skillctx.lastHealCrit = ctx.critical;
+        }
 
     if (currentHP > GetModifiedStat(StatType.MaxHP))
         currentHP = GetModifiedStat(StatType.MaxHP);

@@ -8,10 +8,6 @@ public class StatusContext : CombatContext
     public int duration;
 
     public float chanceMod;
-    public bool witScaling;
-
-    public bool dexScaling;
-    public bool mightScaling;
 
     public StatusContext(Combatant applier, Combatant target, StatusEffect status)
     {
