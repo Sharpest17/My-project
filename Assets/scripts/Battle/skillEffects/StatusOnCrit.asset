@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusPrefab: {fileID: 11400000, guid: 9c9ea09e34ea67e4c99c7cf0b01f55e6, type: 2}
   chance: 1
+  affectTarget: 0
+  onHealCrit: 1
+  onDamageCrit: 0
+  onHit: 0

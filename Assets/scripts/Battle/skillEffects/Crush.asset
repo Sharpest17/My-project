@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5fca75a0afd3f46be6ec3357f827ce, type: 3}
+  m_Script: {fileID: 11500000, guid: b7f1fdc52c7a43647a1a00e39591725b, type: 3}
   m_Name: Crush
   m_EditorClassIdentifier: 
   statusPrefab: {fileID: 11400000, guid: 493932889f1ae2e4ea2a8f4afe7055b1, type: 2}
-  chance: 0.5
+  chance: 1
+  affectTarget: 1
+  onHealCrit: 0
+  onDamageCrit: 0
+  onHit: 1

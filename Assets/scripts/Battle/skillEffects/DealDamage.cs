@@ -13,7 +13,14 @@ public class DealDamage : SkillEffect
 
         int lastAttackDamage = 0;
 
-        
+        if(targets.Count >1)
+        {
+            BattleManager.Instance.AddMessage($"{user.character.characterName} attacks all targets");
+        }
+        else
+        {
+            BattleManager.Instance.AddMessage($"{user.character.characterName} attacks");
+        }
         foreach(Combatant target in targets){
         DamageContext ctx = new DamageContext(
         user,

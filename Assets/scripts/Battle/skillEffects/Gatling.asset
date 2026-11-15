@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Gatling
   m_EditorClassIdentifier: 
   bounceCount: 5
+  targetAll: 1

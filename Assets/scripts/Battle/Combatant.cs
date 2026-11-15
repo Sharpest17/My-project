@@ -186,7 +186,6 @@ public class Combatant
             BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName}'s attack was denied");
             return;
         }
-        BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} attacks {ctx.target.character.characterName}");
     if (ctx.dodged)
         {
             skillctx.lastAttackDamage = 0;
@@ -199,23 +198,27 @@ public class Combatant
     
     BattleManager.Instance.modifierManager.Broadcast(HookType.BeforeDamage, ctx);
     //applies damage
+    if(ctx.attacker != ctx.target){
     BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} dealt {ctx.finalDamage-ctx.blockedDamage} to {ctx.target.character.characterName}");
+    }
     currentHP -= ctx.finalDamage- ctx.blockedDamage;
     if (currentHP < 0)
         currentHP = 0;
 
     if(skillctx != null)
     {
+        if(ctx.attacker != ctx.target){
         skillctx.lastAttackDamage =ctx.finalDamage;
         skillctx.hitCount++;
         skillctx.lastHit = true;
+
 
         if(ctx.critical)
         {
             BattleManager.Instance.AddMessage("Critical hit!");
             skillctx.critCount++;
         }
-
+        }
         skillctx.lastCrit = ctx.critical;
 
         if(wasAlive && !IsAlive())
@@ -250,13 +253,11 @@ public class Combatant
     if(skillctx != null)
         {
             skillctx.lastHealCrit = ctx.critical;
+            skillctx.lastHealAmount = ctx.finalHeal;
         }
 
     if (currentHP > GetModifiedStat(StatType.MaxHP))
         currentHP = GetModifiedStat(StatType.MaxHP);
-
-        BattleManager.Instance.AddMessage($"{ctx.attacker.character.characterName} healed {ctx.finalHeal} HP to {character.characterName}!");
-        
     }
 
     public void SpendResources(Skill skill)

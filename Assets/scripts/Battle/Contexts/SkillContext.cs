@@ -21,6 +21,8 @@ public class SkillContext : CombatContext
 
     public int lastAttackDamage = 0;
 
+    public int lastHealAmount = 0;
+
     public int actionValueMod = 0;
 
     public SkillContext(

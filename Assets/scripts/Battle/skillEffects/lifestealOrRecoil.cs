@@ -33,9 +33,10 @@ public class lifestealOrRecoil : SkillEffect
             skill.defendStat,
             skill
             );
-            float recoil = skillctx.lastAttackDamage*RecoilPercentage;
-            ctx.finalDamage = Mathf.FloorToInt(recoil);
-            user.TakeDamage(ctx);
+            int recoil = Mathf.FloorToInt(skillctx.lastAttackDamage*RecoilPercentage);
+            ctx.finalDamage = recoil;
+            BattleManager.Instance.AddMessage($"{user.character.characterName} suffers {recoil} recoil");
+            user.TakeDamage(ctx, skillctx);
         }
     }
 }

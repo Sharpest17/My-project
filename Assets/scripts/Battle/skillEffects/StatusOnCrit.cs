@@ -16,6 +16,8 @@ public class StatusOnCrit : SkillEffect
     public bool onHealCrit;
 
     public bool onDamageCrit;
+    
+    public bool onHit;
 
     public override void Apply(Combatant user, List<Combatant> targets, Skill skill, SkillContext skillctx)
     {
@@ -38,7 +40,7 @@ public class StatusOnCrit : SkillEffect
             Debug.Log($"{user.character.characterName} {newStatus.Name} was denied!");
             return;
         }
-            if((onHealCrit &&skillctx.lastHealCrit)||(onDamageCrit&&skillctx.lastCrit))
+            if((onHealCrit &&skillctx.lastHealCrit)||(onDamageCrit&&skillctx.lastCrit)||(onHit&&skillctx.lastHit))
         {
             target.ApplyStatus(ctx);
         }
@@ -61,7 +63,7 @@ public class StatusOnCrit : SkillEffect
             Debug.Log($"{user.character.characterName} {newStatus.Name} was denied!");
             return;
         }
-            if((onHealCrit &&skillctx.lastHealCrit)||(onDamageCrit&&skillctx.lastCrit))
+            if((onHealCrit &&skillctx.lastHealCrit)||(onDamageCrit&&skillctx.lastCrit)||(onHit && skillctx.lastHit))
         {
             user.ApplyStatus(ctx);
         }

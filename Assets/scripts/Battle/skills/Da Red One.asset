@@ -18,13 +18,14 @@ MonoBehaviour:
   defendStat: 3
   targetType: 1
   actionValueMultiplier: 1
-  baseHit: 70
+  baseHit: 100
   baseCrit: 10
   spCost: 0
   tpCost: 0
   tags: 12
   intents: 1
   damageType: 10
+  skillTip: 
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
   - {fileID: 11400000, guid: a2d4a6fd6d5820443882536006df6033, type: 2}

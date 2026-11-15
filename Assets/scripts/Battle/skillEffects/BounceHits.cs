@@ -9,6 +9,7 @@ public class BounceHits : SkillEffect
     
     public override void Apply(Combatant user, List<Combatant> targets, Skill skill, SkillContext skillctx)
     {
+        BattleManager.Instance.AddMessage($"{user.character.characterName} unleashes a {bounceCount} attack onslaught!");
         for(int i = 0; i < bounceCount; i++)
         {
             if(targetAll){
