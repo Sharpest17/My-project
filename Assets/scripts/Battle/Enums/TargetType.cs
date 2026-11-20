@@ -8,4 +8,9 @@ public enum TargetType
     AllAllies,
     RandomAlly,
     DeadAlly,
+    AnyAlive,
+    AllAlive,
+    Any,
+    All,
+    Summon
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Jane
   isPlayerControlled: 1
-  baseMaxHP: 50
+  baseMaxHP: 10
   baseStrength: 1
   baseMagic: 11
   baseDefense: 3

@@ -15,8 +15,8 @@ MonoBehaviour:
   hooks: 
   tags: 
   Name: damage up
-  baseDuration: 5
-  duration: 5
+  baseDuration: 2
+  duration: 2
   durationType: 0
   count: 0
   IsExpired: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   critMod: 0
   critAvoMod: 0
   critBonus: 0
-  damagePercent: 0.2
+  damagePercent: 0.3
   vulnerability: 0
   resistance: 0
   dodged: 0

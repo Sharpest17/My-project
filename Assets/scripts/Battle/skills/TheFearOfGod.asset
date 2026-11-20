@@ -25,6 +25,8 @@ MonoBehaviour:
   tags: 160
   intents: 9
   damageType: 3
+  skillTip: attack a target, reducing their res and speed for 1 turn and delaying
+    them by 50%
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
   - {fileID: 11400000, guid: 5325b821f908a4d459d6fb7cfe5fe1c2, type: 2}

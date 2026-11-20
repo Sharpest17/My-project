@@ -25,5 +25,6 @@ MonoBehaviour:
   tags: 128
   intents: 2
   damageType: 4
+  skillTip: heal hp based on user's magic
   effects:
   - {fileID: 11400000, guid: bc33de1f66d1b4046a736cff7052225f, type: 2}

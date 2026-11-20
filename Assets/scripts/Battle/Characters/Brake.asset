@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Brake
   isPlayerControlled: 0
-  baseMaxHP: 35
+  baseMaxHP: 2
   baseStrength: 4
   baseMagic: 12
   baseDefense: 1

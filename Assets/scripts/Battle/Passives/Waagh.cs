@@ -12,5 +12,22 @@ public class Waagh : PassiveSkill
                 stat.multiplier+= owner.team.currentTP/10f;
             }
         }
+        if(ctx is BattleContext bat)
+        {if(hook == HookType.BattleStart){
+            BattleManager.Instance.AddMessage("WAAAGH! GANK EM LON!");
+        }
+        if(hook == HookType.BattleEnd)
+        {
+            if(bat.battle.victory){
+            BattleManager.Instance.AddMessage("DA GANK GANG'S... BEEN GANKED...");
+            }
+                else
+                {
+                    BattleManager.Instance.AddMessage("BUNCHA KRUMPS GIT CHUMPED!");
+                }
+        }
+        }
+
+        
     }
 }

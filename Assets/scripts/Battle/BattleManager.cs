@@ -145,9 +145,65 @@ public void StartBattle(
     Debug.Log($"combatant count: {combatants.Count}");
     battleUI.SetupCombatHUD(combatants);
     battleUI.SetupTPHUD(teams);
+    BattleContext ctx = new BattleContext(this);
+    modifierManager.Broadcast(HookType.BattleStart,ctx);
     ProcessTurns();
 }
 
+public Combatant UnitEnters(Character character, float InitialAVPercent = 1f, bool removedOnDefeat = true)
+{
+        Combatant summoned = new Combatant(character);
+
+    // Assign its team
+    if(summoned.isPlayerControlled)
+            {
+                summoned.team = teams[0];
+            }
+            else
+            {
+                summoned.team = teams[1];
+            }
+
+    // Initialize resources
+    summoned.removeOnDefeat = removedOnDefeat;
+    summoned.currentHP = summoned.GetModifiedStat(StatType.MaxHP);
+    summoned.currentSP = summoned.GetModifiedStat(StatType.MaxSP);
+    summoned.actionValue = BaseActionCost*InitialAVPercent;
+
+    modifierManager.Broadcast(HookType.UnitEnters, new UnitContext(summoned));
+
+    combatants.Add(summoned);
+
+    // Notify modifiers that a new unit has entered
+    // (You'll want a corresponding UnitEnteredField hook.)
+
+    // Update UI
+    battleUI.RefreshCombatHUD();
+
+    return summoned;
+}
+
+public void RemoveCombatant(Combatant target)
+{
+    if (!combatants.Contains(target))
+        return;
+
+    bool wasCurrentCombatant = currentCombatant == target;
+
+    modifierManager.Broadcast(
+        HookType.UnitRemoved,
+        new UnitContext(target)
+    );
+
+    combatants.Remove(target);
+
+    battleUI.SetupCombatHUD(combatants);
+
+    if (wasCurrentCombatant)
+    {
+        ProcessTurns();
+    }
+}
 public void AddMessage(string message)
 {
     combatLog.Enqueue(message);
@@ -237,9 +293,8 @@ private void UseSkill(Combatant user, Skill skill, List<Combatant> targets)
     EndTurn(user);
 }
 
-public void TriggerSkill(Combatant user, Skill skill, Combatant target)
+public void TriggerSkill(Combatant user, Skill skill, List<Combatant> targets)
 {
-    List<Combatant> targets = new List<Combatant> { target };
 
     SkillContext skillCtx = new SkillContext(user, skill);
 
@@ -376,6 +431,8 @@ public void ClearAllStatuses()
             {
                 AddMessage("defeat...");
             }
+        BattleContext ctx = new BattleContext(this);
+        modifierManager.Broadcast(HookType.BattleEnd,ctx);
         return true;
     }
     return false;
@@ -477,11 +534,30 @@ public void ClearAllStatuses()
 
         case TargetType.DeadAlly:
         {
-            Combatant ally = GetFirstDeadAlly(user);
-            if (ally != null)
-            targets.Add(ally);
+            targets.AddRange(GetDeadAllies(user));
             break;
         }   
+
+        case TargetType.AnyAlive:
+        {
+            targets.AddRange(GetAnyAlive(user));    
+            break;   
+        }
+        case TargetType.AllAlive:
+        {
+            targets.AddRange(GetAnyAlive(user));     
+            break;  
+        }
+        case TargetType.Any:
+        {
+            targets.AddRange(combatants);
+            break;
+        }
+        case TargetType.All:
+        {
+            targets.AddRange(combatants);
+            break;
+        }
     }
 
     TargetingContext ctx =
@@ -556,10 +632,15 @@ modifierManager.Broadcast(
     return combatants.FindAll(c =>
         c.IsAlive() && c.IsAlly(user));
     }
-    public Combatant GetFirstDeadAlly(Combatant user)
+    public List<Combatant> GetDeadAllies(Combatant user)
 {
-    return combatants.Find(c =>
+    return combatants.FindAll(c =>
         !c.IsAlive() &&
         c.IsAlly(user));
 }
+    public List<Combatant> GetAnyAlive(Combatant user)
+    {
+        return combatants.FindAll(c => c.IsAlive());
+    }
+
 }

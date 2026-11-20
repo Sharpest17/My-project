@@ -6,7 +6,6 @@ public class Character : ScriptableObject
 {
     public string characterName;
     public bool isPlayerControlled;
-
     public int baseMaxHP;
     public int baseStrength;
     public int baseMagic;

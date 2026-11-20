@@ -138,6 +138,8 @@ public class BattleUI : MonoBehaviour
         case TargetType.SingleEnemy:
         case TargetType.SingleAlly:
         case TargetType.DeadAlly:
+        case TargetType.AnyAlive:
+        case TargetType.Any:
             return true;
             default:
             return false;

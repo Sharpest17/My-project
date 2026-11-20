@@ -18,7 +18,7 @@ MonoBehaviour:
   defendStat: 3
   targetType: 1
   actionValueMultiplier: 1
-  baseHit: 100
+  baseHit: 5
   baseCrit: 10
   spCost: 0
   tpCost: 0

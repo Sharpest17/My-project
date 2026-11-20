@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BurnDown
   m_EditorClassIdentifier: 
   lifestealPercentage: 0
-  RecoilPercentage: 0.5
+  RecoilPercentage: 0.3
   isLifesteal: 0
   isRecoil: 1

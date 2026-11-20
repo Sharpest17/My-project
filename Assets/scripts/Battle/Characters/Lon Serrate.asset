@@ -17,12 +17,12 @@ MonoBehaviour:
   baseMaxHP: 40
   baseStrength: 14
   baseMagic: 3
-  baseDefense: 9
+  baseDefense: 6
   baseResistance: 4
   baseSpeed: 14
   baseSkill: 14
   baseLuck: 14
-  baseMove: 7
+  baseMove: 11
   maxSP: 15
   skills: []
   passives:

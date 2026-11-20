@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Mazano
   isPlayerControlled: 1
-  baseMaxHP: 30
+  baseMaxHP: 35
   baseStrength: 7
   baseMagic: 7
   baseDefense: 5

@@ -15,4 +15,4 @@ MonoBehaviour:
   hooks: 
   tags: 
   oath: 0
-  triggerable: {fileID: 0}
+  triggerable: {fileID: 11400000, guid: ee919ad691223314ab38ce2b3667efcf, type: 2}

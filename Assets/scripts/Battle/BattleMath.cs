@@ -112,11 +112,10 @@ public static class BattleMath
         Debug.Log($"Shield calc by: {ctx.attacker.character.characterName}");
         
         float finalShield =
-        (scaling
+        scaling
         *(1+ctx.outShield)
         *(1+ctx.inShield)
-        *(1+.2f*(ctx.count+ctx.countMod))
-        );
+        *(1+.2f*(ctx.count+ctx.countMod));
         Debug.Log($"count: {ctx.count+ctx.countMod}, scaling stat: {ctx.scaling}, scaling stat value: {scaling}");
 
         ctx.finalShield = Mathf.RoundToInt(finalShield);

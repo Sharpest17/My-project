@@ -34,5 +34,11 @@ public enum HookType
 
     ModifyTargets,
 
-    ModifyResourceGain
+    ModifyResourceGain,
+
+    BattleStart,
+    BattleEnd,
+
+    UnitEnters,
+    UnitRemoved
 }

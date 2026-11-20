@@ -23,9 +23,11 @@ public class Bladesworn : PassiveSkill
                 case 4: BattleManager.Instance.AddMessage("Lon: i swear upon what was cut"); break;
                 case 5: BattleManager.Instance.AddMessage("Lon: i swear upon what is cut"); break;
                 case 6: BattleManager.Instance.AddMessage("Lon: i swear upon what will be cut"); break;
-                case 7: BattleManager.Instance.AddMessage("Lon: ... i left my sword in the ship"); 
+                case 7: BattleManager.Instance.AddMessage("Lon: LACERATE!"); 
               
-                //BattleManager.Instance.TriggerSkill(owner, triggerable, targets);
+                List<Combatant> targets = BattleManager.Instance.GetAllAliveEnemies(owner);
+
+                BattleManager.Instance.TriggerSkill(owner, triggerable, targets);
                 oath = 0;
                 break;
                 }

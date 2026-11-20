@@ -20,11 +20,12 @@ MonoBehaviour:
   actionValueMultiplier: 1.5
   baseHit: 80
   baseCrit: 40
-  spCost: 0
-  tpCost: 1
+  spCost: 3
+  tpCost: 3
   tags: 32
   intents: 1
   damageType: 1
+  skillTip: Massive AOE fire damage, 30% recoil
   effects:
   - {fileID: 11400000, guid: d917de0add0acad4cbc27764366a82f1, type: 2}
   - {fileID: 11400000, guid: fb1c21a0300ae8343a30e4d1937ea18a, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Flow
   isPlayerControlled: 1
-  baseMaxHP: 30
+  baseMaxHP: 40
   baseStrength: 10
   baseMagic: 3
   baseDefense: 14
@@ -25,7 +25,7 @@ MonoBehaviour:
   baseMove: 7
   maxSP: 15
   skills:
-  - {fileID: 11400000, guid: e41f53beb7b69d142ae5585f880a0255, type: 2}
+  - {fileID: 11400000, guid: 3ec4ed6527333f14eacf24ae4741ccca, type: 2}
   - {fileID: 11400000, guid: b23cdbb76dcd69444a0fd9721d15ad0b, type: 2}
   - {fileID: 11400000, guid: a076a158c3a3a7f4c9b555f6dda8b979, type: 2}
   passives:

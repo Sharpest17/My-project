@@ -19,6 +19,8 @@ public class Combatant
     public int initiative;
     public bool hasActed;
 
+    public bool removeOnDefeat;
+
     public float actionValue;
     [SerializeField] private int baseStrength;
     [SerializeField] private int baseMagic;
@@ -204,6 +206,8 @@ public class Combatant
     currentHP -= ctx.finalDamage- ctx.blockedDamage;
     if (currentHP < 0)
         currentHP = 0;
+    
+    bool wasKOd = wasAlive && !IsAlive();
 
     if(skillctx != null)
     {
@@ -221,13 +225,12 @@ public class Combatant
         }
         skillctx.lastCrit = ctx.critical;
 
-        if(wasAlive && !IsAlive())
+        if(wasKOd)
         {
-            BattleManager.Instance.AddMessage($"{ctx.target.character.characterName} was knocked out!");
             skillctx.koCount++;
         }
 
-        skillctx.lastKOd = wasAlive && !IsAlive();
+        skillctx.lastKOd = wasKOd;
     }
 
     Debug.Log($"{this.character.characterName} has taken {ctx.finalDamage} from {ctx.attacker.character.characterName}'s {ctx.source}!");
@@ -239,10 +242,15 @@ public class Combatant
             BattleManager.Instance.modifierManager.Broadcast(HookType.OnCrit, ctx);
         }
 
-    if (wasAlive && !IsAlive())
+    if (wasKOd)
         {
         Debug.Log($"{this.character.characterName} is down");
+        BattleManager.Instance.AddMessage($"{ctx.target.character.characterName} was knocked out!");
         BattleManager.Instance.modifierManager.Broadcast(HookType.OnKill, ctx);
+        if(removeOnDefeat)
+                {
+                    BattleManager.Instance.RemoveCombatant(this);
+                }
         }
 }
 
