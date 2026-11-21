@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11d473a9870924469606b92909a8a19, type: 3}
+  m_Name: TenonPassive
+  m_EditorClassIdentifier: 
+  hooks: 
+  tags: 
+  pMain: {fileID: 11400000, guid: 8d3f9c04a52c5064f9a6239048a55025, type: 2}
+  Scrap: {fileID: 11400000, guid: f84e15c0171a0ee4bbc9848e991f2bbf, type: 2}
+  Scrapping: {fileID: 11400000, guid: c32a0ba95c847b94aa8a14175b40ca65, type: 2}
+  Hammer: {fileID: 11400000, guid: 41404d9584c1b4444bd1f02bf1f3ca12, type: 2}
+  Healbot: {fileID: 11400000, guid: 1e4b66f281d9e6944823e8a15632191c, type: 2}
+  heal: {fileID: 11400000, guid: c340e5def9fd9c3488346cee771e7f06, type: 2}
+  bonus: {fileID: 11400000, guid: b94999f83647ed14082272f5bb9e53b1, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Tenon
   isPlayerControlled: 1
-  baseMaxHP: 10
+  baseMaxHP: 35
   baseStrength: 7
   baseMagic: 7
   baseDefense: 6
@@ -27,4 +27,7 @@ MonoBehaviour:
   skills:
   - {fileID: 11400000, guid: 8d3f9c04a52c5064f9a6239048a55025, type: 2}
   - {fileID: 11400000, guid: 4fefb91eb0b44f540b328e3332b56571, type: 2}
-  passives: []
+  - {fileID: 11400000, guid: 6dd2ad92ba3a67a4b81ba2c232ccb566, type: 2}
+  - {fileID: 11400000, guid: 85498a4c09c4753468265ae858a15e0e, type: 2}
+  passives:
+  - {fileID: 11400000, guid: 548345bdfc4ed054c95f62173819f90d, type: 2}

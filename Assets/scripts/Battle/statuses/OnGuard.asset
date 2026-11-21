@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hooks: 
   tags: 
-  Name: 
+  Name: On Guard
   baseDuration: 1
   duration: 1
   durationType: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
   critMod: 0
   critAvoMod: 0
   critBonus: 0
-  damagePercent: 0
+  damagePercent: -0.25
   vulnerability: 0
   resistance: 0
   dodged: 0

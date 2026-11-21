@@ -16,6 +16,9 @@ public class Combatant
     public int currentHP;
 
     public int currentSP;
+
+    public int currentShield = 0;
+    public int shieldDuration = 0;
     public int initiative;
     public bool hasActed;
 
@@ -206,6 +209,8 @@ public class Combatant
     currentHP -= ctx.finalDamage- ctx.blockedDamage;
     if (currentHP < 0)
         currentHP = 0;
+
+    BattleManager.Instance.modifierManager.Broadcast(HookType.OnHit, ctx);
     
     bool wasKOd = wasAlive && !IsAlive();
 

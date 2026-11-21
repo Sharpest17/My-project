@@ -25,7 +25,7 @@ MonoBehaviour:
   tags: 0
   intents: 0
   damageType: 0
-  skillTip: summons a scrap sentry, get gains hit and  crit when hit by percussive
+  skillTip: summons a scrap sentry, it gains hit and  crit when hit by percussive
     maintenance
   effects:
   - {fileID: 11400000, guid: a92035915e33034498e0a7b276ff37a4, type: 2}

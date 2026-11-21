@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fafae1c3e753d842ad1e0fda6565e29, type: 3}
   m_Name: Wait
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: Wait
   power: 0
   attackingStat: 0
   defendStat: 0
@@ -23,7 +23,8 @@ MonoBehaviour:
   spCost: 0
   tpCost: 0
   tags: 0
-  intents: 0
+  intents: 2
   damageType: 0
   skillTip: 
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 6c9f1f1806f8751478d746762453cb9e, type: 2}

@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: S. Sentry
   isPlayerControlled: 1
-  baseMaxHP: 0
-  baseStrength: 0
-  baseMagic: 0
-  baseDefense: 0
-  baseResistance: 0
+  baseMaxHP: 20
+  baseStrength: 8
+  baseMagic: 8
+  baseDefense: 10
+  baseResistance: 5
   baseSpeed: 0
-  baseSkill: 0
-  baseLuck: 0
-  baseMove: 0
+  baseSkill: 10
+  baseLuck: 10
+  baseMove: 20
   maxSP: 0
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: 096b43b8dc48f454596273e70304ec54, type: 2}
   passives: []

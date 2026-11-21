@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd564fbf13ab664c9b7a5e513ad3324, type: 3}
   m_Name: Hammerbot
   m_EditorClassIdentifier: 
-  characterName: Hammerbot
+  characterName: Hammer B.
   isPlayerControlled: 1
-  baseMaxHP: 0
-  baseStrength: 0
-  baseMagic: 0
-  baseDefense: 0
-  baseResistance: 0
-  baseSpeed: 0
-  baseSkill: 0
-  baseLuck: 0
-  baseMove: 0
+  baseMaxHP: 30
+  baseStrength: 14
+  baseMagic: 1
+  baseDefense: 13
+  baseResistance: 2
+  baseSpeed: 14
+  baseSkill: 13
+  baseLuck: 13
+  baseMove: 10
   maxSP: 0
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: d09d2af76a38ef04192b4aa0390916b3, type: 2}
+  - {fileID: 11400000, guid: 11c2658b697f16344a150b7be0b392d0, type: 2}
   passives: []
